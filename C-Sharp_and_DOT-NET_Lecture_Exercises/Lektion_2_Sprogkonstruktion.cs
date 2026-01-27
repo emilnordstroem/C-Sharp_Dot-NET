@@ -5,24 +5,24 @@ using System.Text;
 var input = Console.ReadLine();
 int inputNumber = int.Parse(input);
 
-static List<int> FibonacciNumbers(List<int> fibonacciNumbers, int baseCondition)
+static List<int> FibonacciNumbers(List<int> fibonacciNumbers, int index, int baseCondition)
 {
 	if (fibonacciNumbers.Count >= baseCondition)
 	{
 		return fibonacciNumbers;
 	} 
-	else if (fibonacciNumbers.Count == 0)
+	else if (index <= 1)
 	{
-		fibonacciNumbers.Add(0);
-		fibonacciNumbers.Add(1);
+		fibonacciNumbers.Add(index);
+	} 
+	else
+	{
+		fibonacciNumbers.Add(fibonacciNumbers[index - 1] + fibonacciNumbers[index - 2]);
 	}
-
-	int nextFibonacciNumber = fibonacciNumbers[fibonacciNumbers.Count - 2] + fibonacciNumbers.Last();
-	fibonacciNumbers.Add(nextFibonacciNumber);
-	return FibonacciNumbers(fibonacciNumbers, baseCondition);
+	return FibonacciNumbers(fibonacciNumbers, index + 1, baseCondition);
 }
 
-var fibonacciNumbers = FibonacciNumbers(new List<int>(), inputNumber);
+var fibonacciNumbers = FibonacciNumbers(new List<int>(), 0, inputNumber);
 Console.Out.WriteLine(string.Join(", ", fibonacciNumbers));
 
 
