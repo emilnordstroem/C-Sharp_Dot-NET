@@ -26,4 +26,42 @@ var fibonacciNumbers = FibonacciNumbers(new List<int>(), inputNumber);
 Console.Out.WriteLine(string.Join(", ", fibonacciNumbers));
 
 
+int age;
+static void CalculateAge(DateTime BirthDateInput, out int age)
+{
+	if (DateTime.Compare(DateTime.Now, BirthDateInput) < 0)
+	{
+		age = DateTime.Now.Year - BirthDateInput.Year;
+	} 
+	else
+	{
+		age = (DateTime.Now.Year - BirthDateInput.Year) - 1;
+	}
+}
+CalculateAge(new DateTime(2002, 12, 13), out age);
+Console.Out.WriteLine(age);
+
+
+static void MyMethodWithError(int num = 0)
+{
+	throw new Exception();
+}
+
+static void MyNormalMethod(int num = 0)
+{
+	try
+	{
+		MyMethodWithError();
+	}
+	catch 
+	{
+		Console.Out.WriteLine("Error was caught");
+	}
+	finally
+	{
+		Console.Out.WriteLine("Executed although an Error was caught");
+	}
+}
+
+MyNormalMethod();
 
