@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
+﻿
 namespace C_Sharp_and_DOT_NET_Lecture_Exercises.personNamespace
 {
 	internal class Person

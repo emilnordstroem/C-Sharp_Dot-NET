@@ -2,7 +2,7 @@
 using C_Sharp_and_DOT_NET_Lecture_Exercises.personNamespace;
 using MyLibrary;
 
-class TestClass
+class Lektion_1_Introduktion
 {
 	static void Main(string[] args)
 	{
@@ -36,6 +36,7 @@ class TestClass
 
 	}
 }
+
 class MyList
 {
 	private List<int> liste = new List<int>();
