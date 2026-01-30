@@ -52,6 +52,5 @@ class MyList
 			Console.WriteLine(number);
 		}
 	}
-
 }
 

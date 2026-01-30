@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 var input = Console.ReadLine();
-int inputNumber = int.Parse(input);
+int inputNumber = int.Parse(input); 
 
 static List<int> FibonacciNumbers(List<int> fibonacciNumbers, int index, int baseCondition)
 {
@@ -64,4 +64,3 @@ static void MyNormalMethod(int num = 0)
 }
 
 MyNormalMethod();
-
