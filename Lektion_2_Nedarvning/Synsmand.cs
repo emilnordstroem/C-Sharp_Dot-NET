@@ -4,13 +4,25 @@ using System.Text;
 
 public class Synsmand : Mekaniker
 {
-	public int AntalSynPerUge { get; set; }
-	public int Ugeloen
+	public Synsmand(
+		CprNr cpr, 
+		string navn, 
+		string adresse, 
+		int aarForSvendeProeve, 
+		double timeloen,
+		int antalSynPrUge
+		) : base(cpr, navn, adresse, aarForSvendeProeve, timeloen)
 	{
-		get { return AntalSynPerUge * 290; }
+		AntalSynPrUge = antalSynPrUge;
+	}
+	public int AntalSynPrUge { get; set; }
+
+    public override double BeregnUgeLoen()
+    {
+		return AntalSynPrUge * 290;
 	}
 	public override string ToString()
 	{
-		return $"{base.ToString()}, Antal syn per uge: {AntalSynPerUge}, Ugeløn {Ugeloen}";
+		return $"{base.ToString()}, Antal syn per uge: {AntalSynPrUge}";
 	}
 }
