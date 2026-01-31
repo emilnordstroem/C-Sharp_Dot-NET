@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using System.Text;
 
 
-public abstract class Medarbejder
+public abstract class Medarbejder : IHarAdresse
 {
 
-    public Medarbejder(CprNr cpr, string navn, string adresse)
+    public Medarbejder(CprNr cpr, string navn, Adresse adresse)
     {
         Navn = navn;
         Adresse = adresse;
@@ -14,7 +14,7 @@ public abstract class Medarbejder
     }
 
 	public string Navn { get; set; }
-	public string Adresse { get; set; }
+	public Adresse Adresse { get; set; }
     public int TimerPrUge 
     {
         get { return 37; }
@@ -25,7 +25,7 @@ public abstract class Medarbejder
 
     public override string ToString()
     {
-        return $"Cpr: {Cpr}, Navn: {Navn}, Adresse: {Adresse}, Ugeløn: {BeregnUgeLoen()}";
+        return $"Cpr: {Cpr}, Navn: {Navn}, Adresse: {Adresse.ToString()}, Ugeløn: {BeregnUgeLoen()}";
     }
 }
 

@@ -4,7 +4,7 @@ using System.Text;
 
 public class Mekaniker : Medarbejder
 {
-    public Mekaniker (CprNr cpr, string navn, string adresse, int aarForSvendeProeve, double timeloen) : base(cpr, navn, adresse)
+    public Mekaniker (CprNr cpr, string navn, Adresse adresse, int aarForSvendeProeve, double timeloen) : base(cpr, navn, adresse)
     {
         AarForSvendeProeve = aarForSvendeProeve;
         Timeloen = timeloen;

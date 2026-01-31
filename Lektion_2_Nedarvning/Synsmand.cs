@@ -7,7 +7,7 @@ public class Synsmand : Mekaniker
 	public Synsmand(
 		CprNr cpr, 
 		string navn, 
-		string adresse, 
+		Adresse adresse, 
 		int aarForSvendeProeve, 
 		double timeloen,
 		int antalSynPrUge

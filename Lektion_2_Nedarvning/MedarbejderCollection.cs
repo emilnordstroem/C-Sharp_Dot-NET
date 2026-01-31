@@ -2,19 +2,20 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Text;
+using System.Xml.Linq;
 
 public class MedarbejderCollection<TKey> where TKey : notnull
 {
-    private readonly Dictionary<TKey, Medarbejder> _collection = new Dictionary<TKey, Medarbejder>();
-    public void AddElement(TKey key, Medarbejder medarbejder)
+    private readonly Dictionary<TKey, IHarAdresse> _collection = new Dictionary<TKey, IHarAdresse>();
+    public void AddElement(TKey key, IHarAdresse element)
     {
         if (_collection.ContainsKey(key))
         {
             throw new ArgumentException();
         }
-        _collection.Add(key, medarbejder);
+        _collection.Add(key, element);
     }
-    public Medarbejder? GetElement(TKey key)
+    public IHarAdresse? GetElement(TKey key)
     {
         try
         {
