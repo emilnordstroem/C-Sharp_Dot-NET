@@ -25,6 +25,15 @@ public class Program
 				DistributeCards();
 				SelectOptions();
 			}
+
+			Console.Out.WriteLine("____________________");
+			Console.Out.WriteLine("Do you want to quit? - yes/no");
+			string responds = Console.ReadLine();
+			if (responds.ToLower() == "yes")
+			{
+				break;
+			}
+			ResetGame();
 		}
 
 
@@ -42,13 +51,27 @@ public class Program
 			string name = Console.ReadLine();
 			Console.Out.WriteLine("How much money do you bring to the table?");
 			int balance = int.Parse(Console.ReadLine());
-
+			while (balance <= 0)
+			{
+				Console.Out.WriteLine($"!! Illegal amount was entered !!");
+				Console.Out.WriteLine("How much money do you bring to the table?");
+				balance = int.Parse(Console.ReadLine());
+			}
 			Player player = new Player(name, balance);
 			players.Add(player, 0);
 			activePlayersInCurrentRound.Add(player);
 			numberOfPlayers--;
 		}
 	}
+
+	static void ResetGame()
+	{
+		activePlayersInCurrentRound.AddRange(players.Keys);
+        foreach (Player player in players.Keys)
+        {
+			player.ClearHand();
+        }
+    }
 
 	static void PlaceBets()
 	{
@@ -59,7 +82,7 @@ public class Program
 			Console.Out.WriteLine($"Maximum bet amount: ${player.Balance}");
 			int placedBet = int.Parse(Console.ReadLine());
 
-			while (placedBet > player.Balance)
+			while (placedBet > player.Balance && placedBet <= 0)
 			{
 				Console.Out.WriteLine("____________________");
 				Console.Out.WriteLine($"!! Illegal amount was entered !!");
@@ -69,6 +92,7 @@ public class Program
 			}
 
 			Console.Out.WriteLine($"Bet of ${placedBet} has been placed");
+			player.Balance -= placedBet;
 			players[player] = placedBet;
 		}
 	}
@@ -99,6 +123,11 @@ public class Program
 					Console.Out.WriteLine("You choose to stand");
 					playersThatStand.Add(player);
 				}
+			}
+			else
+			{
+				Console.Out.WriteLine("You went over 21");
+				playersThatStand.Add(player);
 			}
 			Console.Out.WriteLine("____________________");
 		}
