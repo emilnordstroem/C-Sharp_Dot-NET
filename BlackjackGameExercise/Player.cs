@@ -4,7 +4,7 @@ using System.Text;
 
 using CardDeck;
 
-namespace PokerParticipant
+namespace Participant
 {
     internal class Player
     {
