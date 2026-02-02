@@ -13,6 +13,23 @@ namespace Participant
 
 		public void AddCardToHand(Card card) { hand.Add(card); }
 		public List<Card> SeeHand() { return hand; }
+		public int ValueOfHand()
+		{
+			int value = 0;
+			foreach (Card card in hand)
+			{
+				int rank = (int)card.Rank;
+				if (rank > 10)
+				{
+					value += 10;
+				}
+				else
+				{
+					value += rank;
+				}
+			}
+			return value;
+		}
 		public void ClearHand() { hand.Clear(); }
 	}
 

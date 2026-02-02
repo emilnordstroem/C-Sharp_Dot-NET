@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Numerics;
+using System.Runtime.InteropServices;
 using CardDeck;
 using Participant;
 
@@ -25,7 +26,8 @@ public class Program
 
 		House house = new House();
 		Deck deck = new Deck();
-		List<Person> participants = [house, player];
+
+		List<Person> participant = [house, player];
 
 		while (true)
 		{
@@ -39,9 +41,16 @@ public class Program
 				PlaceBet(ref player);
 			}
 
-			DistributeCards(ref participants, ref deck);
-
-
+			while (true)
+			{
+				DistributeCards(ref participant, ref deck);
+				CheckValue(ref participant);
+				bool selectOption = SelectOption(player);
+				if (!selectOption)
+				{
+					break;
+				}
+			}
 
 			Console.Out.WriteLine("Do you want to continue playing? - yes/no");
 			string responds = Console.ReadLine();
@@ -80,6 +89,46 @@ public class Program
 			Console.Out.WriteLine(participant.ToString());
 			Console.Out.WriteLine($"Hand: {string.Join("|", hand.Select(card => card.ToString()))}");
 			Console.Out.WriteLine("_________________________________________");
+		}
+	}
+
+	static void CheckValue (ref List<Person> participants)
+	{
+		foreach (Person participant in participants)
+		{
+			int valueOfHand = participant.ValueOfHand();
+			Console.Out.WriteLine("_________________________________________");
+			Console.Out.WriteLine(participant.ToString());
+			Console.Out.WriteLine($"Value: {valueOfHand}");
+			Console.Out.WriteLine("_________________________________________");
+		}
+	}
+
+	static bool SelectOption(Player player)
+	{
+		int valueOfHand = player.ValueOfHand();
+		if (valueOfHand < 21)
+		{
+			Console.Out.WriteLine("_________________________________________");
+			Console.Out.WriteLine(player.ToString());
+			Console.Out.WriteLine("Choose an option: Hit (1), Stand(2)");
+			string responds = Console.ReadLine();
+			if (responds == "1") 
+			{ 
+				return true; 
+			}
+			else 
+			{ 
+				return false; 
+			}
+		}
+		else if (valueOfHand == 21)
+		{
+			return true;
+		}
+		else
+		{
+			return false;
 		}
 	}
 
