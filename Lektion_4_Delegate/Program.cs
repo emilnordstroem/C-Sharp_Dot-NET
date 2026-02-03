@@ -26,12 +26,16 @@ public class Program
         int factorial = Factorial(4);
 		Console.Out.WriteLine(factorial);
 
+		Console.Out.WriteLine(4.Factorial());
         int factorialInput = 4;
         factorial = factorialInput.Factorial();
 		Console.Out.WriteLine(factorial);
         factorial = MyExtensionForInt.Factorial(factorialInput);
         Console.Out.WriteLine(factorial);
 
+        int powerTo = Power(10, 1);
+		Console.Out.WriteLine(powerTo);
+        Console.Out.WriteLine(10.Power(2));
 
 
 	}
@@ -58,6 +62,15 @@ public class Program
             return n;
         }
         return n * Factorial(n - 1);
+    }
+
+    public static int Power(int n, int p)
+    {
+        if (p <= 0)
+        {
+            return n; 
+        }
+        return n * Power(n, p - 1);
     }
 
 }
@@ -87,4 +100,14 @@ public static class MyExtensionForInt
 		}
 		return n * Factorial(n - 1);
 	}
+
+	public static int Power(this int n, int p)
+	{
+		if (p <= 0)
+		{
+			return n;
+		}
+		return n * Power(n, p - 1);
+	}
+
 }
