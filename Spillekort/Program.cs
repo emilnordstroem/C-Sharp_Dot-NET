@@ -4,7 +4,6 @@ using Spillekort;
 
 public class Program
 {
-
     static void Main(string[] args)
     {
         DeckOfCards deck = new DeckOfCards();
