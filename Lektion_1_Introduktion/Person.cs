@@ -1,5 +1,5 @@
 ﻿
-namespace C_Sharp_and_DOT_NET_Lecture_Exercises.personNamespace
+namespace personNamespace
 {
 	internal class Person
     {

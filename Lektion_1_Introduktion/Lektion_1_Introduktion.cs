@@ -1,5 +1,5 @@
 ﻿
-using C_Sharp_and_DOT_NET_Lecture_Exercises.personNamespace;
+using personNamespace;
 using MyLibrary;
 
 class Lektion_1_Introduktion

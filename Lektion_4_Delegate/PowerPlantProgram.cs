@@ -1,7 +1,7 @@
 ﻿
 using PowerPlantEntity;
 
-public class Program
+public class PowerPlantProgram
 {
     static void Main(string[] args)
     {

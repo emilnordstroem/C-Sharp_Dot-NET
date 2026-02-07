@@ -2,7 +2,7 @@
 
 using Spillekort;
 
-public class Program
+public class CardGameProgram
 {
     static void Main(string[] args)
     {
