@@ -1,5 +1,5 @@
 ﻿
-public class Program
+public class LINQExercises
 {
     static void Main(string[] args)
     {
@@ -83,6 +83,5 @@ public class Program
     {
 		integers.ForEach(integers => Console.WriteLine(integers));
 	}
-
 
 }
