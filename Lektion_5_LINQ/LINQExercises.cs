@@ -4,18 +4,16 @@ public class LINQExercises
     static void Main(string[] args)
     {
 		EvenIntegers();
-        Console.WriteLine("==================================");
 		EvenIntegersLINQ();
-		Console.WriteLine("==================================");
-
 		IntegersAbove15();
-        Console.WriteLine("==================================");
-
 		IndexOfLastElementAbove15();
-		Console.WriteLine("==================================");
-
 		IntegersOfExactlyTwoDigits();
-		Console.WriteLine("==================================");
+
+		int[] numbers = { 34, 8, 56, 31, 79, 150, 88, 7, 200, 47, 88, 20 };
+		SortNumbersAscending(numbers);
+		SortNumbersDescending(numbers);
+		SortNumbersAscendingString(numbers);
+		EvenUnevenNumbers(numbers);
 	}
 
 	private static void EvenIntegers()
@@ -79,9 +77,42 @@ public class LINQExercises
 		return integer.ToString().Length == 2;
 	}
 
-    private static void Print(List<int> integers)
+	private static void SortNumbersAscending(int[] numbers)
+	{
+		IEnumerable<int> result = numbers.Where(ContainsTwoDigits).OrderBy(number => number);
+		Print(result.ToList());
+	}
+	private static void SortNumbersDescending(int[] numbers)
+	{
+		IEnumerable<int> result = numbers.Where(ContainsTwoDigits).OrderByDescending(number => number);
+		Print(result.ToList());
+	}
+	private static void SortNumbersAscendingString(int[] numbers)
+	{
+		IEnumerable<string> result = numbers
+			.Where(ContainsTwoDigits)
+			.OrderBy(number => number)
+			.Select(number => number.ToString());
+		Print(result.ToList());
+    }
+	private static void EvenUnevenNumbers(int[] numbers)
+	{
+		IEnumerable<string> result = numbers
+			.Where(ContainsTwoDigits)
+			.OrderByDescending(number => number)
+			.Select(number => IsEven(number) ? $"{number.ToString()} even" : $"{number.ToString()} uneven");
+		Print(result.ToList());
+	}
+
+    private static void Print(List<int> input)
     {
-		integers.ForEach(integers => Console.WriteLine(integers));
+		Console.WriteLine("==================================");
+		input.ForEach(integers => Console.WriteLine(integers));
+	}
+	private static void Print(List<string> input)
+	{
+		Console.WriteLine("==================================");
+		input.ForEach(integers => Console.WriteLine(integers));
 	}
 
 }
