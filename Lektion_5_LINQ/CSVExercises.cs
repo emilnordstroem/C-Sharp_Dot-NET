@@ -64,6 +64,33 @@ public class CSVExercises
 		);
 
 		people.Reset();
+
+		// Task 5.10
+		List<int> integers = new List<int>();
+
+		Random random = new Random();
+		int limit = 100;
+		while (limit > 0)
+		{
+			integers.Add(random.Next(1, 101));
+			limit--;
+		}
+		Print(
+			"Number of Uneven Integers",
+			NumberOfUnevenIntegers(integers)
+		);
+		Print(
+			"Number of Unique Integers",
+			NumberOfUniqueIntegers(integers)
+		);
+		Print(
+			"First Three Uneven Integers",
+			FirstXUnevenIntegers(integers, 3)
+		);
+		Print(
+			"All Unique Uneven Integers",
+			AllUniqueUnevenIntegers(integers)
+		);
 	}
 
 	private static List<Person> GetPeopleFrom(string filename)
@@ -132,6 +159,23 @@ public class CSVExercises
 		return people.OrderByDescending(person => person.Age).ToList();
 	}
 
+	private static int NumberOfUnevenIntegers(List<int> integers)
+	{
+		return integers.Where(integer => integer % 2 != 0).Count();
+	}
+	private static int NumberOfUniqueIntegers(List<int> integers)
+	{
+		return integers.Distinct().Count();
+	}
+	private static List<int> FirstXUnevenIntegers(List<int> integers, int amount)
+	{
+		return integers.Where(integer => integer % 2 != 0).Take(3).ToList();
+	}
+	private static List<int> AllUniqueUnevenIntegers(List<int> integers)
+	{
+		return integers.Where(integer => integer % 2 != 0).Distinct().ToList();
+	}
+
 
 	private static void Print(string message, List<Person> people)
 	{
@@ -144,6 +188,12 @@ public class CSVExercises
 		Console.WriteLine("============================");
 		Console.WriteLine(message);
 		Console.WriteLine(value);
+	}
+	private static void Print(string message, List<int> people)
+	{
+		Console.WriteLine("============================");
+		Console.WriteLine(message);
+		people.ForEach(integer => Console.WriteLine($"{integer}\n"));
 	}
 
 }
