@@ -62,6 +62,8 @@ public class CSVExercises
 			"Sorted By Age Descending",
 			SortPeopleByAgeDesc(people)
 		);
+
+		people.Reset();
 	}
 
 	private static List<Person> GetPeopleFrom(string filename)
@@ -156,4 +158,13 @@ public static class PersonExtension
 		Console.WriteLine("All That Were Accepted:");
 		list.ForEach(person => Console.WriteLine($"{person.ToString()}\n"));
 	}
+
+	public static void Reset(this List<Person> list)
+	{
+		Console.WriteLine("============================");
+		Console.WriteLine("Reset All People...");
+		list.ForEach(person => person.Accepted = false);
+		list.ForEach(person => Console.WriteLine($"{person.ToString()}\n"));
+	}
+
 }
