@@ -42,6 +42,26 @@ public class CSVExercises
 			"Indexes Age Under 8 and Score of 3", 
 			IndexOfFirstPersonUnderAgeAndWithScoreOf(people, 8, 3)
 		);
+
+		Predicate<Person> predicate = person => person.Score > 5;
+		people.SetAcceptedPerson(predicate);
+
+		Print(
+			"Sorted By Score Ascending", 
+			SortPeopleByScoreAsc(people)
+		);
+		Print(
+			"Sorted By Score Descending",
+			SortPeopleByScoreDesc(people)
+		);
+		Print(
+			"Sorted By Age Ascending",
+			SortPeopleByAgeAsc(people)
+		);
+		Print(
+			"Sorted By Age Descending",
+			SortPeopleByAgeDesc(people)
+		);
 	}
 
 	private static List<Person> GetPeopleFrom(string filename)
@@ -93,6 +113,24 @@ public class CSVExercises
 		return people.FindIndex(person => person.Age < belowAge && person.Score == score);
 	}
 
+	private static List<Person> SortPeopleByScoreAsc(List<Person> people)
+	{
+		return people.OrderBy(person => person.Score).ToList();
+	}
+	private static List<Person> SortPeopleByScoreDesc(List<Person> people)
+	{
+		return people.OrderByDescending(person => person.Score).ToList();
+	}
+	private static List<Person> SortPeopleByAgeAsc(List<Person> people)
+	{
+		return people.OrderBy(person => person.Age).ToList();
+	}
+	private static List<Person> SortPeopleByAgeDesc(List<Person> people)
+	{
+		return people.OrderByDescending(person => person.Age).ToList();
+	}
+
+
 	private static void Print(string message, List<Person> people)
 	{
 		Console.WriteLine("============================");
@@ -106,4 +144,16 @@ public class CSVExercises
 		Console.WriteLine(value);
 	}
 
+}
+
+public static class PersonExtension
+{
+	public static void SetAcceptedPerson(this List<Person> list, Predicate<Person> predicate)
+	{
+		list.FindAll(predicate).ForEach(person => person.Accepted = true);
+
+		Console.WriteLine("============================");
+		Console.WriteLine("All That Were Accepted:");
+		list.ForEach(person => Console.WriteLine($"{person.ToString()}\n"));
+	}
 }

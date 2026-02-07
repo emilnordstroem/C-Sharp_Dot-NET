@@ -33,7 +33,7 @@ public class Person
 
     public override string ToString()
     {
-        return $"Name: {Name}\nAge: {Age}\nWeight: {Weight}\nScore: {Score}";
+        return $"Name: {Name}\nAge: {Age}\nWeight: {Weight}\nScore: {Score}\nAccepted: {Accepted}";
     }
 
 	public static List<Person> ReadCSVFile(string filename)
@@ -50,4 +50,5 @@ public class Person
 		}
 		return people;
 	}
+
 }
