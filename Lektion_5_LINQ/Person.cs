@@ -13,6 +13,16 @@ public class Person
 		Accepted = false;
 	}
 
+	public Person(string name, int age, int weight, int score, bool accepted)
+	{
+		Name = name;
+		Age = age;
+		Weight = weight;
+		Score = score;
+		Accepted = accepted;
+	}
+
+
 	public Person(string data)
 	{
 		// Name, Age, Weight, Score  

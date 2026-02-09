@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -7,7 +8,7 @@ public class CSVExercises
 	static void Main(string[] args)
 	{
 		List<Person> people = GetPeopleFrom("data1");
-
+		/*
 		Print(
 			"Score Below 2", 
 			PeopleWithScoreBelow(people, 2)
@@ -90,6 +91,28 @@ public class CSVExercises
 		Print(
 			"All Unique Uneven Integers",
 			AllUniqueUnevenIntegers(integers)
+		);
+		*/
+		// Task 5.11
+		List<Person> data1 = GetPeopleFrom("data1");
+		List<Person> data2 = GetPeopleFrom("data1");
+
+		List<Person> allPeople = data1.Union(data2).ToList();
+		Console.WriteLine("============================");
+		Console.WriteLine("All People Group By Capital Letter");
+		IEnumerable<IGrouping<char, Person>> grouedByFirstLetter = allPeople.GroupBy(people => people.Name[0]);
+		foreach (var group in grouedByFirstLetter)
+		{
+			Console.WriteLine($"Group by {group.Key}");
+			foreach (Person person in group)
+			{
+				Console.WriteLine($"{person.ToString()}\n");
+			}
+		}
+
+		Print(
+			"People present in both Data sets",
+			NamesPresentInBoth(data1, data2)
 		);
 	}
 
@@ -176,6 +199,20 @@ public class CSVExercises
 		return integers.Where(integer => integer % 2 != 0).Distinct().ToList();
 	}
 
+	private static List<Person> NamesPresentInBoth(List<Person> people1, List<Person> people2)
+	{
+		return people1.Join(people2,
+			person1 => person1.Name,
+			person2 => person2.Name,
+			(person1, person2) =>
+			new Person(
+				person1.Name,
+				person1.Age,
+				person1.Weight,
+				person1.Score,
+				person1.Accepted
+			)).ToList();
+	}
 
 	private static void Print(string message, List<Person> people)
 	{
