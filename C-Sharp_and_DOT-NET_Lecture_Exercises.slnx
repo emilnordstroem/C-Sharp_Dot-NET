@@ -1,9 +1,10 @@
 <Solution>
   <Project Path="Lektion_1_Introduktion/Lektion_1_Introduktion.csproj" Id="5134b6c3-87c5-4cf3-90bd-e61819b5a260" />
   <Project Path="Lektion_2_Sprogkonstruktion/Lektion_2_Sprogkonstruktion.csproj" Id="8958be29-9bb7-423c-bcbf-2537e1861399" />
-  <Project Path="Lektion_3_BlackJackExercise/Lektion_3_BlackJackExercise.csproj" Id="621ed269-949f-4ea6-89dc-f11c811a4ff5" DisplayName="Lektion_3_BlackjackExercise" />
+  <Project Path="Lektion_3_BlackJackExercise/Lektion_3_BlackJackExercise.csproj" Id="621ed269-949f-4ea6-89dc-f11c811a4ff5" />
   <Project Path="Lektion_3_Objektorienteret/Lektion_3_Objektorienteret.csproj" Id="f4d688ba-2976-44a1-8946-5a1534a7b528" />
   <Project Path="Lektion_4_Delegate/Lektion_4_Delegate.csproj" Id="c7912494-8d2c-424b-a30d-7c46b33b1a57" />
   <Project Path="Lektion_5_LINQ/Lektion_5_LINQ.csproj" Id="a6e3db8d-5960-4844-8bcc-f57bfa068e7c" />
+  <Project Path="Lektion_6_MVC/Lektion_6_MVC.csproj" Id="f81040c4-a822-43d8-99bd-d70604fb5664" />
   <Project Path="MyLibrary/MyLibrary.csproj" Id="909c3bac-0b0c-4231-870e-d4bafc9fbec0" />
 </Solution>

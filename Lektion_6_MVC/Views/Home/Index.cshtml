@@ -1,0 +1,15 @@
+﻿
+@{
+}
+
+<p>My First View</p>
+
+<p>Using ViewBag</p>
+<p>Name: @ViewBag.name</p>
+<p>Age: @ViewBag.age</p>
+<p>Birthday: @ViewBag.birthday.ToString("dd. MMMM yyyy", new System.Globalization.CultureInfo("en-US"))</p>
+
+<p>Using Model</p>
+<p>Name: @Model.Name</p>
+<p>Age: @Model.Age</p>
+<p>Birthday: @Model.Birthday.ToString("dd. MMMM yyyy", new System.Globalization.CultureInfo("en-US"))</p>
