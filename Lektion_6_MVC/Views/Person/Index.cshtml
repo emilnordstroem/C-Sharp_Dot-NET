@@ -1,0 +1,25 @@
+﻿@using Lektion_6_MVC.Models; 
+
+@functions {
+	public void RenderPerson(Person person)
+	{
+		<div>
+			<h4>
+				@person.FirstName @person.LastName
+			</h4>
+			<p>
+				Address: @person.Address, @person.Zip, @person.City
+			</p>
+			<p>
+				Phone No.: @string.Join(", ", person.PhoneNumbers)
+			</p>
+		</div>
+	}
+}
+
+@{
+	foreach(Person person in ViewBag.people)
+	{
+		RenderPerson(person);
+	}
+}

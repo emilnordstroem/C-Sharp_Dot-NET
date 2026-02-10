@@ -1,0 +1,78 @@
+﻿@using Lektion_6_MVC.Models;
+
+@functions{
+	public void RenderBook(Book book)
+	{
+		<div>
+			<div>
+				<h4>
+					Title: @book.Name
+				</h4>
+				<h4>
+					Author: @book.Author
+				</h4>
+				<h4>
+					Price: @book.Price
+				</h4>
+				<h4>
+					Publisher: @book.Publisher (@book.Published)
+				</h4>
+				<h4>
+					ISBN: @book.ISBN
+				</h4>
+			</div>
+			@if (book.ImageUrl != null)
+			{
+			<div>
+				<img src="@book.ImageUrl" />
+			</div>
+			}
+		</div>
+	}
+}
+
+@functions{
+	public void RenderMusicCD(MusicCD cd)
+	{
+		<div>
+			<div>
+				<h4>
+					Title: @cd.Name
+				</h4>
+				<h4>
+					Author: @cd.Artist
+				</h4>
+				<h4>
+					Price: @cd.Price
+				</h4>
+				<h4>
+					Publisher: @cd.Label (@cd.Released)
+				</h4>
+			</div>
+			@if (cd.ImageUrl != null)
+			{
+			<div>
+				<img src="@cd.ImageUrl" />
+			</div>
+			}
+			<div>
+				<h4>
+					Tracks:
+				</h4>
+				<ol>
+					@foreach (string track in cd.Tracks)
+					{
+						<li>
+							@track
+						</li>
+					}
+				</ol>
+			</div>
+		</div>
+	}
+}
+
+@{
+	RenderBook(ViewBag.book);
+	RenderMusicCD(ViewBag.cd);
+}
