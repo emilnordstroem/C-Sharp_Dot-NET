@@ -4,7 +4,7 @@ namespace Lektion_6_MVC.Controllers
 {
     public class RockbandsController : Controller
     {
-        public IActionResult Rockbands()
+        public IActionResult Index()
         {
             string[] rockbands = { 
                 "Led Zeppelin",
@@ -18,7 +18,7 @@ namespace Lektion_6_MVC.Controllers
                 "Bob Marley and the Wailers"
             };
             ViewBag.rockbands = rockbands;
-            return View();
+            return View("Rockbands");
         }
     }
 }

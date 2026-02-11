@@ -65,7 +65,9 @@ public class CSVExercises
 		);
 
 		people.Reset();
+		*/
 
+		/*
 		// Task 5.10
 		List<int> integers = new List<int>();
 
@@ -93,6 +95,8 @@ public class CSVExercises
 			AllUniqueUnevenIntegers(integers)
 		);
 		*/
+
+		/*
 		// Task 5.11
 		List<Person> data1 = GetPeopleFrom("data1");
 		List<Person> data2 = GetPeopleFrom("data1");
@@ -114,6 +118,7 @@ public class CSVExercises
 			"People present in both Data sets",
 			NamesPresentInBoth(data1, data2)
 		);
+		*/
 	}
 
 	private static List<Person> GetPeopleFrom(string filename)

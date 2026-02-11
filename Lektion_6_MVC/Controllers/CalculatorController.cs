@@ -5,13 +5,13 @@ namespace Lektion_6_MVC.Controllers
     public class CalculatorController : Controller
     {
         [HttpGet]
-        public IActionResult TimeCalculator()
+        public IActionResult Index()
         {
-            return View();
+            return View("TimeCalculator");
         }
 
 		[HttpPost]
-		public ActionResult TimeCalculator(IFormCollection formCollection)
+		public ActionResult Index(IFormCollection formCollection)
 		{
             int hours = Convert.ToInt32(formCollection["Hours"]);
 			int minutes = Convert.ToInt32(formCollection["Minutes"]);

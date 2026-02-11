@@ -5,13 +5,13 @@ namespace Lektion_6_MVC.Controllers
     public class SimpleCalculatorController : Controller
     {
         [HttpGet]
-        public IActionResult Calculator()
+        public IActionResult Index()
         {
-            return View();
+            return View("Calculator");
         }
 
         [HttpPost]
-		public IActionResult Calculator(IFormCollection formCollection)
+		public IActionResult Index(IFormCollection formCollection)
 		{
             int firstNumber = Convert.ToInt32(formCollection["firstNumber"]);
 			int secondNumber = Convert.ToInt32(formCollection["secondNumber"]);
@@ -39,7 +39,7 @@ namespace Lektion_6_MVC.Controllers
             }
 
             ViewBag.CalculationResult = result;
-			return View();
+			return View("Calculator");
 		}
 	}
 }

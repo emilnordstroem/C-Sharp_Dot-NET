@@ -60,13 +60,16 @@
 					Tracks:
 				</h4>
 				<ol>
-					@foreach (string track in cd.Tracks)
+					@foreach (Track track in cd.Tracks)
 					{
 						<li>
-							@track
+							@track.ToString()
 						</li>
 					}
 				</ol>
+				<h4>
+					Total playing time: @cd.GetPlayingTime()
+				</h4>
 			</div>
 		</div>
 	}
