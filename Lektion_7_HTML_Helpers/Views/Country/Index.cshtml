@@ -1,0 +1,28 @@
+﻿
+<div>
+	@using (Html.BeginForm("Index", "Country", FormMethod.Get))
+	{
+		@Html.DropDownList(
+			"SelectedCountry",
+			ViewBag.Countries as List<SelectListItem>
+		)
+		<input type="submit" value="Show country code" />
+	}
+	@if (ViewBag.CountryCode != null)
+	{
+		<strong>Country code: </strong>
+		@ViewBag.CountryCode
+	}
+</div>
+<div>
+	@using (Html.BeginForm("Index", "Country", FormMethod.Post))
+	{
+		<span>Country:</span>
+		@Html.TextBox("Country")
+		<br />
+		<span>Code: </span>
+		@Html.TextBox("Code")
+		<br />
+		<input type="submit" value="Send" />
+	}
+</div>

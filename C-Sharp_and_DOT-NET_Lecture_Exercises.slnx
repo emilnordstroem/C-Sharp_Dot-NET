@@ -6,5 +6,6 @@
   <Project Path="Lektion_4_Delegate/Lektion_4_Delegate.csproj" Id="c7912494-8d2c-424b-a30d-7c46b33b1a57" />
   <Project Path="Lektion_5_LINQ/Lektion_5_LINQ.csproj" Id="a6e3db8d-5960-4844-8bcc-f57bfa068e7c" />
   <Project Path="Lektion_6_MVC/Lektion_6_MVC.csproj" Id="f81040c4-a822-43d8-99bd-d70604fb5664" />
+  <Project Path="Lektion_7_HTML_Helpers/Lektion_7_HTML_Helpers.csproj" Id="358adcc7-45f7-48e4-8873-4d3dcf305393" />
   <Project Path="MyLibrary/MyLibrary.csproj" Id="909c3bac-0b0c-4231-870e-d4bafc9fbec0" />
 </Solution>
