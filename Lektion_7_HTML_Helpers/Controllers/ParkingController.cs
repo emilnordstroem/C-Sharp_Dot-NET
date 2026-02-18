@@ -7,21 +7,24 @@ namespace Lektion_7_HTML_Helpers.Controllers
 	public class ParkingController : Controller
 	{
 		[HttpGet]
-		public IActionResult Index()
+		public IActionResult Index(ParkingTicketMachine? parkingTicketMachine)
 		{
-			ParkingTicketMachine parkingTicketMachine = new ParkingTicketMachine
+			if (parkingTicketMachine == null)
 			{
-				TimeNow = DateTime.Now,
-				PaidUntil = DateTime.Now,
-				MinutesPerKr = 3,
-				AmountInserted = 0,
-				CoinsToInsert = [1,2,5,10,20]
-			};
+				parkingTicketMachine = new ParkingTicketMachine
+				{
+					TimeNow = DateTime.Now,
+					PaidUntil = DateTime.Now,
+					MinutesPerKr = 3,
+					AmountInserted = 0,
+					CoinsToInsert = [1, 2, 5, 10, 20]
+				};
+			}
 			return View(parkingTicketMachine);
 		}
 
 		[HttpPost]
-		public IActionResult Index(IFormCollection formData)
+		public IActionResult Index(IFormCollection formCollection)
 		{
 			ParkingTicketMachine parkingTicketMachine = new ParkingTicketMachine
 			{
@@ -33,33 +36,33 @@ namespace Lektion_7_HTML_Helpers.Controllers
 			};
 
 			int amountedInserted = 0;
-			if (!string.IsNullOrEmpty(formData["AmountInserted"]))
+			if (!string.IsNullOrEmpty(formCollection["AmountInserted"]))
 			{
-				amountedInserted += int.Parse(formData["AmountInserted"]);
+				amountedInserted += int.Parse(formCollection["AmountInserted"]);
 			}
-			else if (!string.IsNullOrEmpty(formData["1 kr"]))
+			else if (!string.IsNullOrEmpty(formCollection["1 kr"]))
 			{
 				amountedInserted += 1;
 			}
-			else if (!string.IsNullOrEmpty(formData["2 kr"]))
+			else if (!string.IsNullOrEmpty(formCollection["2 kr"]))
 			{
 				amountedInserted += 2;
 			}
-			else if (!string.IsNullOrEmpty(formData["5 kr"]))
+			else if (!string.IsNullOrEmpty(formCollection["5 kr"]))
 			{
 				amountedInserted += 5;
 			}
-			else if (!string.IsNullOrEmpty(formData["10 kr"]))
+			else if (!string.IsNullOrEmpty(formCollection["10 kr"]))
 			{
 				amountedInserted += 10;
 			}
-			else if (!string.IsNullOrEmpty(formData["20 kr"]))
+			else if (!string.IsNullOrEmpty(formCollection["20 kr"]))
 			{
 				amountedInserted += 20;
 			}
 			parkingTicketMachine.InsertAmount(amountedInserted);
 
-			if (!string.IsNullOrEmpty(formData["cancel"]))
+			if (!string.IsNullOrEmpty(formCollection["cancel"]))
 			{
 				parkingTicketMachine = new ParkingTicketMachine
 				{
@@ -70,7 +73,7 @@ namespace Lektion_7_HTML_Helpers.Controllers
 					CoinsToInsert = [1, 2, 5, 10, 20]
 				};
 			} 
-			else if (!string.IsNullOrEmpty(formData["confirm"]))
+			else if (!string.IsNullOrEmpty(formCollection["confirm"]))
 			{
 				return View("Confirm", parkingTicketMachine);
 			}
@@ -79,12 +82,11 @@ namespace Lektion_7_HTML_Helpers.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult Confirm(IFormCollection formData)
+		public IActionResult Confirm(ParkingTicketMachine? parkingTicketMachine)
 		{
-			ParkingTicketMachine? parkingTicketMachine = JsonSerializer.Deserialize<ParkingTicketMachine>(formData["ParkingTicketMachine"]);
 			if (parkingTicketMachine == null)
 			{
-				return View("Index");
+				return View("Index", parkingTicketMachine);
 			}
 			return View(parkingTicketMachine);
 		}

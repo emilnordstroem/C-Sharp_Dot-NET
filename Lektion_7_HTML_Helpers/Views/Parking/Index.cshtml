@@ -4,45 +4,35 @@
 	Layout = null; 
 } 
 
-@functions{
-	public void RenderParkingTicketInfo()
-	{
-		@using (Html.BeginForm())
-		{
-			@Html.LabelFor(Model => Model.TimeNow)
-			@Html.DisplayFor(Model => Model.TimeNow)
-			<br />
-			@Html.LabelFor(Model => Model.PaidUntil)
-			@Html.DisplayFor(Model => Model.PaidUntil)
-			<br />
-			@Html.LabelFor(Model => Model.AmountInserted)
-			@Html.DisplayFor(Model => Model.AmountInserted)
-			<br />
-			<br />
-			@if (Model.CoinsToInsert != null)
-			{
-				@Html.LabelFor(Model => Model.CoinsToInsert)
-				@foreach (var coin in Model.CoinsToInsert)
-				{
-					<input type="submit" value="@coin kr" />
-				}
-			}
-			<br />
-			<br />
-			<span>
-				<input type="submit" value="Confirm" />
-				<input type="submit" value="Cancel" />
-			</span>
-		}
-	}
-}
-
 <div>
-	@{
-		<h1>
-			Parking Ticket Machine
-		</h1>
-		RenderParkingTicketInfo();
+	<h1>
+		Parking Ticket Machine
+	</h1>
+	@using (Html.BeginForm())
+	{
+		@Html.LabelFor(Model => Model.TimeNow)
+		@Html.DisplayFor(Model => Model.TimeNow)
+		<br />
+		@Html.LabelFor(Model => Model.PaidUntil)
+		@Html.DisplayFor(Model => Model.PaidUntil)
+		<br />
+		@Html.LabelFor(Model => Model.AmountInserted)
+		@Html.DisplayFor(Model => Model.AmountInserted)
+		<br />
+		<br />
+		@if (Model.CoinsToInsert != null)
+		{
+			@Html.LabelFor(Model => Model.CoinsToInsert)
+			@foreach (var coin in Model.CoinsToInsert)
+			{
+				<input type="submit" value="@coin kr" />
+			}
+		}
+		<br />
+		<br />
+		<span>
+			<input type="submit" value="Confirm" />
+			<input type="submit" value="Cancel" />
+		</span>
 	}
-
 </div>
