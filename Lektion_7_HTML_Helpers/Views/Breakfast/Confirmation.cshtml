@@ -1,0 +1,20 @@
+﻿@model Lektion_7_HTML_Helpers.Models.BreakfastOrder
+
+<div>
+	<h1>
+		Breakfast Order
+	</h1>
+	<p>
+		Good morning @Model.Fullname
+	</p>
+	<br />
+	<br />
+	<p>
+		You have ordered: @string.Join(", ", Model.SelectedItems)
+	</p>
+	<br />
+	<br />
+	<p>
+		Your order will be prepared and delivered<br />to room number @Model.RoomNumber, @Model.DeliveryDateTime
+	</p>
+</div>

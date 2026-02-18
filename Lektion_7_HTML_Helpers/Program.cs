@@ -28,7 +28,7 @@ namespace Lektion_7_HTML_Helpers
 			app.MapStaticAssets();
 			app.MapControllerRoute(
 				name: "default",
-				pattern: "{controller=Parking}/{action=Index}/{id?}")
+				pattern: "{controller=Breakfast}/{action=Index}/{id?}")
 				.WithStaticAssets();
 
 			app.Run();

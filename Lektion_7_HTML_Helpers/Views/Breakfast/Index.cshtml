@@ -1,0 +1,34 @@
+﻿@model Lektion_7_HTML_Helpers.Models.BreakfastOrder
+@{
+	ViewBag.Title = "Breakfast";
+	Layout = null;
+}
+
+<h1>Breakfast order</h1>
+@using (Html.BeginForm())
+{
+	@Html.LabelFor(Model =>  Model.Fullname)
+	<input type="text" name="fullname" />
+	@Html.LabelFor(Model => Model.RoomNumber)
+	<input type="number" name="roomnumber" />
+
+	<p>
+		What would you like to eat for breakfast?
+		<br />
+		<br />
+		<input type="checkbox" name="menuitem" value="cornflakes" /> Cornflakes<br />
+		<input type="checkbox" name="menuitem" value="egg" /> Egg<br />
+		<input type="checkbox" name="menuitem" value="toast" /> Toast<br />
+		<input type="checkbox" name="menuitem" value="juice" /> Juice<br />
+		<input type="checkbox" name="menuitem" value="milk" /> Milk<br />
+		<input type="checkbox" name="menuitem" value="coffee" /> Coffee<br />
+		<input type="checkbox" name="menuitem" value="tea" /> Tea<br />
+	</p>
+
+	@Html.LabelFor(Model => Model.DeliveryDateTime)
+	<input type="datetime" name="deliverydatetime" />
+
+	<p>
+		<input type="submit" value="Order" />
+	</p>
+} 
