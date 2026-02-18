@@ -6,12 +6,14 @@ namespace Lektion_7_HTML_Helpers.Controllers
 {
 	public class ParkingController : Controller
 	{
+		private ParkingTicketMachine _parkingTicketMachine;
+
 		[HttpGet]
-		public IActionResult Index(ParkingTicketMachine? parkingTicketMachine)
+		public IActionResult Index()
 		{
-			if (parkingTicketMachine == null)
+			if (HttpContext.Session.GetString("ParkingTicketMachine") == null)
 			{
-				parkingTicketMachine = new ParkingTicketMachine
+				_parkingTicketMachine = new ParkingTicketMachine
 				{
 					TimeNow = DateTime.Now,
 					PaidUntil = DateTime.Now,
@@ -19,66 +21,81 @@ namespace Lektion_7_HTML_Helpers.Controllers
 					AmountInserted = 0,
 					CoinsToInsert = [1, 2, 5, 10, 20]
 				};
+				HttpContext.Session.SetString(
+					"ParkingTicketMachine",
+					JsonSerializer.Serialize(_parkingTicketMachine)
+				);
 			}
-			return View(parkingTicketMachine);
+			else
+			{
+				_parkingTicketMachine = JsonSerializer.Deserialize<ParkingTicketMachine>(
+					HttpContext.Session.GetString("ParkingTicketMachine")
+				);
+			}
+
+			return View(_parkingTicketMachine);
 		}
 
 		[HttpPost]
 		public IActionResult Index(IFormCollection formCollection)
 		{
-			ParkingTicketMachine parkingTicketMachine = new ParkingTicketMachine
+			if (HttpContext.Session.GetString("ParkingTicketMachine") == null)
 			{
-				TimeNow = DateTime.Now,
-				PaidUntil = DateTime.Now,
-				MinutesPerKr = 3,
-				AmountInserted = 0,
-				CoinsToInsert = [1, 2, 5, 10, 20]
-			};
+				return Index();
+			} 
+			else
+			{
+				_parkingTicketMachine = JsonSerializer.Deserialize<ParkingTicketMachine>(
+					HttpContext.Session.GetString("ParkingTicketMachine")
+				);
+			}
+
+			if (!string.IsNullOrEmpty(formCollection["cancel"]))
+			{
+				HttpContext.Session.SetString(
+					"ParkingTicketMachine",
+					null
+				);
+				return View();
+			}
+			else if (!string.IsNullOrEmpty(formCollection["confirm"]))
+			{
+				return View("Confirm", _parkingTicketMachine);
+			}
 
 			int amountedInserted = 0;
 			if (!string.IsNullOrEmpty(formCollection["AmountInserted"]))
 			{
 				amountedInserted += int.Parse(formCollection["AmountInserted"]);
 			}
-			else if (!string.IsNullOrEmpty(formCollection["1 kr"]))
+			else if (!string.IsNullOrEmpty(formCollection["1"]))
 			{
 				amountedInserted += 1;
 			}
-			else if (!string.IsNullOrEmpty(formCollection["2 kr"]))
+			else if (!string.IsNullOrEmpty(formCollection["2"]))
 			{
 				amountedInserted += 2;
 			}
-			else if (!string.IsNullOrEmpty(formCollection["5 kr"]))
+			else if (!string.IsNullOrEmpty(formCollection["5"]))
 			{
 				amountedInserted += 5;
 			}
-			else if (!string.IsNullOrEmpty(formCollection["10 kr"]))
+			else if (!string.IsNullOrEmpty(formCollection["10"]))
 			{
 				amountedInserted += 10;
 			}
-			else if (!string.IsNullOrEmpty(formCollection["20 kr"]))
+			else if (!string.IsNullOrEmpty(formCollection["20"]))
 			{
 				amountedInserted += 20;
 			}
-			parkingTicketMachine.InsertAmount(amountedInserted);
+			_parkingTicketMachine.InsertAmount(amountedInserted);
 
-			if (!string.IsNullOrEmpty(formCollection["cancel"]))
-			{
-				parkingTicketMachine = new ParkingTicketMachine
-				{
-					TimeNow = DateTime.Now,
-					PaidUntil = DateTime.Now,
-					MinutesPerKr = 3,
-					AmountInserted = 0,
-					CoinsToInsert = [1, 2, 5, 10, 20]
-				};
-			} 
-			else if (!string.IsNullOrEmpty(formCollection["confirm"]))
-			{
-				return View("Confirm", parkingTicketMachine);
-			}
+			HttpContext.Session.SetString(
+				"ParkingTicketMachine",
+				JsonSerializer.Serialize(_parkingTicketMachine)
+			);
 
-			return View(parkingTicketMachine);
+			return View(_parkingTicketMachine);
 		}
 
 		[HttpGet]

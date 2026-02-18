@@ -3,3 +3,17 @@
 	ViewBag.Title = "Parkin Ticket";
 	Layout = null;
 }
+
+<h1>
+	Parking Ticket
+</h1>
+<div>
+	<span>@Html.LabelFor(Model => Model.TimeNow)</span>
+	@Html.DisplayFor(Model => Model.TimeNow)
+</div>
+<br />
+<br />
+<div>
+	<span>@Html.LabelFor(Model => Model.PaidUntil)</span>
+	@Html.DisplayFor(Model => Model.PaidUntil)
+</div>
