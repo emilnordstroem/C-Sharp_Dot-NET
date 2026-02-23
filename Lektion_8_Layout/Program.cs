@@ -1,4 +1,4 @@
-namespace Lektion_7_HTML_Helpers
+namespace Lektion_8_Layout
 {
 	public class Program
 	{
@@ -6,21 +6,16 @@ namespace Lektion_7_HTML_Helpers
 		{
 			var builder = WebApplication.CreateBuilder(args);
 
-			builder.Services.AddDistributedMemoryCache();
-			builder.Services.AddSession(options =>
-			{
-				options.IdleTimeout = TimeSpan.FromMinutes(30); // Session timeout
-				options.Cookie.HttpOnly = true; // Security
-				options.Cookie.IsEssential = true; // Required for GDPR compliance
-			});
-
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
 
 			var app = builder.Build();
 
-			app.UseSession();
-
+			// Configure the HTTP request pipeline.
+			if (!app.Environment.IsDevelopment())
+			{
+				app.UseExceptionHandler("/Home/Error");
+			}
 			app.UseRouting();
 
 			app.UseAuthorization();
@@ -28,7 +23,7 @@ namespace Lektion_7_HTML_Helpers
 			app.MapStaticAssets();
 			app.MapControllerRoute(
 				name: "default",
-				pattern: "{controller=Parking}/{action=Index}/{id?}")
+				pattern: "{controller=Home}/{action=Sale}/{id?}")
 				.WithStaticAssets();
 
 			app.Run();

@@ -105,6 +105,10 @@ namespace Lektion_7_HTML_Helpers.Controllers
 			{
 				return View("Index", parkingTicketMachine);
 			}
+			HttpContext.Session.SetString(
+				"ParkingTicketMachine",
+				null
+			);
 			return View(parkingTicketMachine);
 		}
 	}
