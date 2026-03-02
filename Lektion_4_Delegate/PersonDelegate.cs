@@ -35,7 +35,8 @@ namespace DelegateExercises {
 
     public class PersonUserClass {
 
-        public static void Main(string[] args) {
+        // if to be run, change back to Main
+        public static void MainExample(string[] args) {
             var people = Person.CreateListOfPeople();
 
             ////////////////////////////////

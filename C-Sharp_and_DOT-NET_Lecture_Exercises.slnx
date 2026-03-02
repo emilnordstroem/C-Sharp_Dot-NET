@@ -1,4 +1,5 @@
 <Solution>
+  <Project Path="Lektion_10_EntityFramework/Lektion_10_EntityFramework.csproj" Id="b318d51e-97a4-4783-938f-a4cf706426d6" />
   <Project Path="Lektion_1_Introduktion/Lektion_1_Introduktion.csproj" Id="5134b6c3-87c5-4cf3-90bd-e61819b5a260" />
   <Project Path="Lektion_2_Sprogkonstruktion/Lektion_2_Sprogkonstruktion.csproj" Id="8958be29-9bb7-423c-bcbf-2537e1861399" />
   <Project Path="Lektion_3_BlackJackExercise/Lektion_3_BlackJackExercise.csproj" Id="621ed269-949f-4ea6-89dc-f11c811a4ff5" />

@@ -3,8 +3,9 @@ using PowerPlantEntity;
 
 public class PowerPlantProgram
 {
-    static void Main(string[] args)
-    {
+	// if to be run, change back to Main
+	public static void MainExample(string[] args)
+    {	
         PowerPlant powerPlant = new PowerPlant();
         powerPlant.Warning += WarningToConsole;
         powerPlant.Warning += SucceedToConsole;
@@ -15,7 +16,6 @@ public class PowerPlantProgram
             powerPlant.HeadUp();
             numberOfInvokes--;
         }
-
 	}
 
 	public static void SucceedToConsole()
