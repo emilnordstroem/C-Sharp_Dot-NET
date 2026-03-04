@@ -1,28 +1,20 @@
-using Context;
+using Lektion_10_EntityFramework.DAL;
+using Microsoft.EntityFrameworkCore;
 
 namespace Lektion_10_EntityFramework
 {
 	public class Program
 	{
-		private static BilContext context = new BilContext();
 		public static void Main(string[] args)
 		{
-
-			// Check om DB findes ud fra database string i context
-			bool created = context.Database.EnsureCreated();
-			if (created)
-			{
-				Console.WriteLine("Database created");
-			}
-
 			var builder = WebApplication.CreateBuilder(args);
 
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
+			builder.Services.AddScoped<BilContext>();
 
 			var app = builder.Build();
 
-			app.UseHttpsRedirection();
 			app.UseRouting();
 
 			app.UseAuthorization();
@@ -30,8 +22,8 @@ namespace Lektion_10_EntityFramework
 			app.MapStaticAssets();
 			app.MapControllerRoute(
 				name: "default",
-				pattern: "{controller=Home}/{action=Index}"
-			).WithStaticAssets();
+				pattern: "{controller=Home}/{action=Index}/{id?}")
+				.WithStaticAssets();
 
 			app.Run();
 		}

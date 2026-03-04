@@ -1,24 +1,23 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
-
-namespace Lektion_10_EntityFramework.Models
+﻿namespace Lektion_10_EntityFramework.Models
 {
-	[Table("Bil")]
 	public class Bil
 	{
-		public int BilID { get; set; } // becomes a primary key
-		public string Name { get; set; }
-		public int Weight { get; set; }
-		public bool Diesel { get; set; }
+		public int ID { get; set; }
+		public string Navn { get; set; }
+		public int Vaegt { get; set; }
 
-		public Bil()
-		{
+		public Bil() {}
 
-		}
-		public Bil(string name, int weight)
+		public Bil(int id, string navn, int vaegt)
 		{
-			Name = name;
-			Weight = weight;
+			ID = id;
+			Navn = navn;
+			Vaegt = vaegt;
 		}
 
+		public override string ToString()
+		{
+			return $"{Navn} på {Vaegt} kg";
+		}
 	}
 }
