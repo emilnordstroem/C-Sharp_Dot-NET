@@ -1,0 +1,6 @@
+@Lektion_9_WebAPITutorialMedJS_HostAddress = http://localhost:5096
+
+GET {{Lektion_9_WebAPITutorialMedJS_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
