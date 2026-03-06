@@ -1,5 +1,4 @@
 <Solution>
-  <Project Path="Lektion_10_EntityFramework/Lektion_10_EntityFramework.csproj" Id="b0e2bd5e-3906-4323-baf0-3c0c47a8d578" />
   <Project Path="Lektion_1_Introduktion/Lektion_1_Introduktion.csproj" Id="5134b6c3-87c5-4cf3-90bd-e61819b5a260" />
   <Project Path="Lektion_2_Sprogkonstruktion/Lektion_2_Sprogkonstruktion.csproj" Id="8958be29-9bb7-423c-bcbf-2537e1861399" />
   <Project Path="Lektion_3_BlackJackExercise/Lektion_3_BlackJackExercise.csproj" Id="621ed269-949f-4ea6-89dc-f11c811a4ff5" />
@@ -9,6 +8,7 @@
   <Project Path="Lektion_6_MVC/Lektion_6_MVC.csproj" Id="f81040c4-a822-43d8-99bd-d70604fb5664" />
   <Project Path="Lektion_7_HTML_Helpers/Lektion_7_HTML_Helpers.csproj" Id="358adcc7-45f7-48e4-8873-4d3dcf305393" />
   <Project Path="Lektion_8_Layout/Lektion_8_Layout.csproj" Id="c427335d-124d-4a34-8839-9c0054d21b47" />
+  <Project Path="Lektion_9_PersonerWebAPI/Lektion_9_PersonerWebAPI.csproj" Id="218045d0-830c-4d7f-81f9-39440127f5a2" />
   <Project Path="Lektion_9_WebAPITutorial/Lektion_9_WebAPITutorial.csproj" Id="b2e7b56b-77f3-43e7-8d09-e8f5ae7d15d4" />
   <Project Path="Lektion_9_WebAPITutorialMedJS/Lektion_9_WebAPITutorialMedJS.csproj" Id="585a3cd5-82ea-4fc1-8ac1-12343e7ec84a" />
   <Project Path="MyLibrary/MyLibrary.csproj" Id="909c3bac-0b0c-4231-870e-d4bafc9fbec0" />
