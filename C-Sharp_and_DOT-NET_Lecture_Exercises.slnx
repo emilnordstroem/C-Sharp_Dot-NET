@@ -9,5 +9,6 @@
   <Project Path="Lektion_6_MVC/Lektion_6_MVC.csproj" Id="f81040c4-a822-43d8-99bd-d70604fb5664" />
   <Project Path="Lektion_7_HTML_Helpers/Lektion_7_HTML_Helpers.csproj" Id="358adcc7-45f7-48e4-8873-4d3dcf305393" />
   <Project Path="Lektion_8_Layout/Lektion_8_Layout.csproj" Id="c427335d-124d-4a34-8839-9c0054d21b47" />
+  <Project Path="Lektion_9_WebAPITutorial/Lektion_9_WebAPITutorial.csproj" Id="b2e7b56b-77f3-43e7-8d09-e8f5ae7d15d4" />
   <Project Path="MyLibrary/MyLibrary.csproj" Id="909c3bac-0b0c-4231-870e-d4bafc9fbec0" />
 </Solution>

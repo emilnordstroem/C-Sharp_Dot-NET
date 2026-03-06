@@ -1,0 +1,6 @@
+@Lektion_9_WebAPITutorial_HostAddress = http://localhost:5287
+
+GET {{Lektion_9_WebAPITutorial_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
