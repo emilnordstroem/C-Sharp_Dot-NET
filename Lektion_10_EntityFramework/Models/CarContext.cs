@@ -15,19 +15,31 @@ namespace Lektion_10_EntityFramework.Models
 			{
 				new Car
 				{
-					Id = 1,
+					CarId = 1,
 					Brand = "Porsche",
 					Model = "Taycan",
-					Year = 2026
+					Year = 2026,
+					OwnerId = 1
+				}
+			});
+
+			modelBuilder.Entity<Owner>().HasData(new Owner[]
+			{
+				new Owner 
+				{ 
+					OwnerId = 1, 
+					Name = "Emil" 
 				}
 			});
 		}
+
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
 			optionsBuilder.UseSqlServer("Data Source=LENOVO-THINKPAD\\SQLEXPRESS; Initial Catalog = EntityFrameworkCars; Integrated Security = SSPI; TrustServerCertificate = true");
 		}
 
 		public DbSet<Car> Cars { get; set; }
+		public DbSet<Owner> Owners { get; set; }
 
 	}
 }

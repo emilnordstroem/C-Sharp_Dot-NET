@@ -15,7 +15,7 @@ namespace Lektion_10_EntityFramework.Controllers
 
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Cars.ToListAsync());
+            return View(await _context.Cars.Include(car => car.Owner).ToListAsync());
         }
 
     }
