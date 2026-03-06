@@ -17,7 +17,8 @@ namespace Lektion_10_EntityFramework.Models
 				{
 					Id = 1,
 					Brand = "Porsche",
-					Model = "Taycan"
+					Model = "Taycan",
+					Year = 2026
 				}
 			});
 		}
