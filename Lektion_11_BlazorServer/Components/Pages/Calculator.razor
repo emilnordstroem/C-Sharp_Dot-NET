@@ -1,6 +1,5 @@
 ﻿@page "/calculator"
-@rendermode InteractiveWebAssembly
-@inject HttpClient Http
+@rendermode InteractiveServer
 
 <PageTitle>Calculator</PageTitle>
 
@@ -15,18 +14,20 @@
 <hr />
 <div>
     <button class="btn btn-primary" @onclick="CalculateResult">=</button>
+</div>
+<hr />
+<div>
     <p role="status">Result: @result</p>
 </div>
 
 @code {
     private int FirstNumber { get; set; }
     private int SecondNumber { get; set; }
-    private static int result = 0;
+    private int result = 0;
 
-    private async Task CalculateResult()
+    private void CalculateResult()
     {
         result = FirstNumber + SecondNumber;
-        var calculation = new { Value = result };
-        await Http.PostAsJsonAsync("api/Calculation", calculation);
     }
 }
+
