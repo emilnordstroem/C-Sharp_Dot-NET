@@ -1,0 +1,29 @@
+﻿@page "/calculator"
+@rendermode InteractiveWebAssembly
+
+<PageTitle>Calculator</PageTitle>
+
+<h1>Calculator</h1>
+
+<hr />
+<div>
+    <input @bind="FirstNumber" type="number" />
+    <p>+</p>
+    <input @bind="SecondNumber" type="number" />
+</div>
+<hr />
+<div>
+    <button class="btn btn-primary" @onclick="CalculateResult">=</button>
+    <p role="status">Result: @result</p>
+</div>
+
+@code {
+    private int FirstNumber { get; set; }
+    private int SecondNumber { get; set; }
+    private int result = 0;
+
+    private void CalculateResult()
+    {
+        result = FirstNumber + SecondNumber;
+    }
+}
