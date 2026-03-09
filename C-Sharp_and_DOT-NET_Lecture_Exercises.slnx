@@ -1,5 +1,6 @@
 <Solution>
   <Project Path="Lektion_10_EntityFramework/Lektion_10_EntityFramework.csproj" Id="6193b35d-84fa-4f45-b99e-55263c91c77d" />
+  <Project Path="Lektion_11_BlazorMVC/Lektion_11_BlazorMVC.csproj" Id="9d9656a5-ccb3-4217-b009-18180654b99d" />
   <Project Path="Lektion_11_BlazorServer/Lektion_11_BlazorServer.csproj" Id="0bb26d86-9222-4cc8-92b8-bbaf00ead684" />
   <Project Path="Lektion_11_BlazorWebAssembly/Lektion_11_BlazorWebAssembly.Client/Lektion_11_BlazorWebAssembly.Client.csproj" Id="e25e2ee5-c326-4ee5-98bd-68af30964d73" />
   <Project Path="Lektion_11_BlazorWebAssembly/Lektion_11_BlazorWebAssembly/Lektion_11_BlazorWebAssembly.csproj" Id="3c1c5a2f-e609-48e0-9716-19d83637de61" />
