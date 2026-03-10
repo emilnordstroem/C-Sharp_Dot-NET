@@ -20,5 +20,17 @@
 
 			SemanticScreenReader.Announce(CounterBtn.Text);
 		}
+
+		private void ShowButtonCheckBox_CheckedChanged(object sender, CheckedChangedEventArgs e)
+		{
+			if (ShowButtonCheckBox.IsChecked)
+			{
+				GreenBtn.IsVisible = true;
+			} 
+			else
+			{
+				GreenBtn.IsVisible = false;
+			}
+		}
 	}
 }
