@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lektion_12_MAUI.BasicGridPage"
+             Title="BasicGridPage">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+
+		<Label 
+			x:Name="Row0Column0"
+			Grid.Row="0" Grid.Column="0"
+			Text="Batman" 
+			HorizontalOptions="Center"
+			VerticalOptions="Center" />
+		<Button
+			x:Name="SwichUpper"
+			Grid.Row="0" Grid.Column="1"
+			Text="Switch Upper" 
+			Clicked="SwichUpper_Clicked" 
+			HorizontalOptions="Center"
+			VerticalOptions="Center" />
+		<Label
+			x:Name="Row0Column2"
+			Grid.Row="0" Grid.Column="2"
+			Text="Robin" 
+			HorizontalOptions="Center"
+			VerticalOptions="Center" />
+
+		<Label 
+			x:Name="Row1Column0"
+			Grid.Row="1" Grid.Column="0"
+			Text="Hulk" 
+			HorizontalOptions="Center"
+			VerticalOptions="Center" />
+		<Button
+			x:Name="SwitchLower"
+			Grid.Row="1" Grid.Column="1"
+			Text="Switch Upper" 
+			Clicked="SwitchLower_Clicked" 
+			HorizontalOptions="Center"
+			VerticalOptions="Center" />
+		<Label
+			x:Name="Row1Column2"
+			Grid.Row="1" Grid.Column="2"
+			Text="Phantom" 
+			HorizontalOptions="Center"
+			VerticalOptions="Center" />
+	</Grid>
+</ContentPage>
