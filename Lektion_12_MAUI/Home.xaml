@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lektion_12_MAUI.Home"
+             Title="Home">
+	<Grid>
+		<Grid.RowDefinitions>
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+			<RowDefinition />
+		</Grid.RowDefinitions>
+		<Grid.ColumnDefinitions>
+			<ColumnDefinition />
+			<ColumnDefinition />
+			<ColumnDefinition />
+		</Grid.ColumnDefinitions>
+
+		<Entry
+			x:Name="LeftSideEntry" 
+			Grid.Row="0" Grid.Column="0" />
+		<Button 
+			Text="Add"
+			Grid.Row="1" Grid.Column="0"
+			Clicked="AddLeftInputToLeftPicker" />
+		<Picker 
+			x:Name="LeftSidePicker"
+			Grid.Row="2" Grid.Column="0" />
+		<Button 
+			x:Name="LeftSideClearButon"
+			Grid.Row="3" Grid.Column="0"
+			Text="Clear" 
+			Clicked="LeftSideClear" />
+
+		<Button 
+			Text="==&gt;"
+			Grid.Row="1" Grid.Column="1"
+			Clicked="MoveLeftToRight" />
+		<Button 
+			Text="&lt;==" 
+			Grid.Row="2" Grid.Column="1"
+			Clicked="MoveRightToLeft" />
+
+		<Entry
+			x:Name="RightSideEntry" 
+			Grid.Row="0" Grid.Column="2" />
+		<Button 
+			Text="Add" 
+			Grid.Row="1" Grid.Column="2" 
+			Clicked="AddRightInputToRightPicker" />
+		<Picker 
+			x:Name="RightSidePicker" 
+			Grid.Row="2" Grid.Column="2" />
+		<Button 
+			x:Name="RightSideClearButton"
+			Grid.Row="3" Grid.Column="2"
+			Text="Clear"
+			Clicked="RightSideClear"/>
+	</Grid>
+</ContentPage>

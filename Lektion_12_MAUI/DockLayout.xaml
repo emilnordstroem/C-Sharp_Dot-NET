@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="Lektion_12_MAUI.DockLayout"
+             Title="DockLayout">
+	<toolkit:DockLayout>
+		<Button 
+			toolkit:DockLayout.DockPosition="Top" 
+			x:Name="Nord"
+			Text="Nord"
+			Clicked="Button_Clicked"
+			HeightRequest="50" />
+		<Button 
+			toolkit:DockLayout.DockPosition="Bottom" 
+			x:Name="Syd"
+			Text="Syd" 
+			Clicked="Button_Clicked"
+			HeightRequest="70" />
+		<Button 
+			toolkit:DockLayout.DockPosition="Left" 
+			x:Name="Vest"
+			Text="Vest" 
+			Clicked="Button_Clicked"
+			WidthRequest="80" />
+		<Button 
+			toolkit:DockLayout.DockPosition="Right" 
+			x:Name="Øst"
+			Text="Øst"
+			Clicked="Button_Clicked"
+			WidthRequest="90" />
+		<CollectionView ItemsSource="{Binding Items}">
+			<CollectionView.ItemsLayout>
+				<GridItemsLayout Span="2" Orientation="Vertical" />
+			</CollectionView.ItemsLayout>
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<Label Text="{Binding .}" 
+					   Padding="10"
+					   HorizontalTextAlignment="Center"/>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+	</toolkit:DockLayout>
+</ContentPage>
