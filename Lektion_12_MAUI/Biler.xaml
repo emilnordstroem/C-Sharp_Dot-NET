@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Lektion_12_MAUI.Biler"
+             Title="Biler">
+	<VerticalStackLayout>
+
+		<VerticalStackLayout BindingContext="{Binding bil}">
+			<Label 
+				Text="Model" />
+			<Entry 
+				x:Name="Model"
+				Text="{Binding Path=Model}" />	
+
+			<Label 
+				Text="Hestekrafter}" />
+			<Entry 
+				x:Name="Hestekrafter"
+				Text="{Binding Path=Hestekrafter}" />
+
+			<Label 
+				Text="Eldreven}" />
+			<CheckBox 
+				x:Name="Eldreven"
+				IsChecked="{Binding Path=Eldreven}" />
+		</VerticalStackLayout>
+
+		<Button Text="Se Bil" Clicked="Button_Clicked" />
+		<Button Text="Gendan" Clicked="Button_Clicked_1" />
+
+		<CollectionView ItemsSource="{Binding BilerListe}">
+			<CollectionView.ItemsLayout>
+				<GridItemsLayout Span="1" Orientation="Vertical" />
+			</CollectionView.ItemsLayout>
+			<CollectionView.ItemTemplate>
+				<DataTemplate>
+					<VerticalStackLayout>
+						<Entry Text="{Binding Model}" />
+						<Entry Text="{Binding Hestekrafter}" />
+						<CheckBox IsChecked="{Binding Eldreven}" />
+					</VerticalStackLayout>
+				</DataTemplate>
+			</CollectionView.ItemTemplate>
+		</CollectionView>
+
+	</VerticalStackLayout>
+</ContentPage>
