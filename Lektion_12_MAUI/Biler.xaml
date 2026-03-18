@@ -4,7 +4,6 @@
              x:Class="Lektion_12_MAUI.Biler"
              Title="Biler">
 	<VerticalStackLayout>
-
 		<VerticalStackLayout BindingContext="{Binding bil}">
 			<Label 
 				Text="Model" />
@@ -25,23 +24,24 @@
 				IsChecked="{Binding Path=Eldreven}" />
 		</VerticalStackLayout>
 
-		<Button Text="Se Bil" Clicked="Button_Clicked" />
-		<Button Text="Gendan" Clicked="Button_Clicked_1" />
+		<Button Text="Se Bil" Clicked="SeBilDetaljer" />
+		<Button Text="Gendan" Clicked="GendanBilDetaljer" />
 
-		<CollectionView ItemsSource="{Binding BilerListe}">
-			<CollectionView.ItemsLayout>
-				<GridItemsLayout Span="1" Orientation="Vertical" />
-			</CollectionView.ItemsLayout>
-			<CollectionView.ItemTemplate>
-				<DataTemplate>
-					<VerticalStackLayout>
-						<Entry Text="{Binding Model}" />
-						<Entry Text="{Binding Hestekrafter}" />
-						<CheckBox IsChecked="{Binding Eldreven}" />
-					</VerticalStackLayout>
-				</DataTemplate>
-			</CollectionView.ItemTemplate>
-		</CollectionView>
-
+		<HorizontalStackLayout>
+			<CollectionView ItemsSource="{Binding BilerListe}">
+				<CollectionView.ItemsLayout>
+					<GridItemsLayout Span="1" Orientation="Vertical" />
+				</CollectionView.ItemsLayout>
+				<CollectionView.ItemTemplate>
+					<DataTemplate>
+						<VerticalStackLayout>
+							<Entry Text="{Binding Model}" />
+							<Entry Text="{Binding Hestekrafter}" />
+							<CheckBox IsChecked="{Binding Eldreven}" />
+						</VerticalStackLayout>
+					</DataTemplate>
+				</CollectionView.ItemTemplate>
+			</CollectionView>
+		</HorizontalStackLayout>
 	</VerticalStackLayout>
 </ContentPage>

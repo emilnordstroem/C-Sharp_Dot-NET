@@ -26,12 +26,12 @@ public partial class Biler : ContentPage
 		BindingContext = this;
 	}
 
-	private void Button_Clicked(object sender, EventArgs e)
+	private void SeBilDetaljer(object sender, EventArgs e)
 	{
 		DisplayAlertAsync("Bil", $"{bil.Model} {bil.Hestekrafter} {bil.Eldreven}", "OK");
 	}
 
-	private void Button_Clicked_1(object sender, EventArgs e)
+	private void GendanBilDetaljer(object sender, EventArgs e)
 	{
 		bil.Model = "Porsche";
 		bil.Hestekrafter = 300;

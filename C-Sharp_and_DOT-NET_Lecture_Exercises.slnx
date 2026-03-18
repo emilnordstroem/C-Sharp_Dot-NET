@@ -4,7 +4,7 @@
   <Project Path="Lektion_11_BlazorServer/Lektion_11_BlazorServer.csproj" Id="0bb26d86-9222-4cc8-92b8-bbaf00ead684" />
   <Project Path="Lektion_11_BlazorWebAssembly/Lektion_11_BlazorWebAssembly.Client/Lektion_11_BlazorWebAssembly.Client.csproj" Id="e25e2ee5-c326-4ee5-98bd-68af30964d73" />
   <Project Path="Lektion_11_BlazorWebAssembly/Lektion_11_BlazorWebAssembly/Lektion_11_BlazorWebAssembly.csproj" Id="3c1c5a2f-e609-48e0-9716-19d83637de61" />
-  <Project Path="Lektion_12_MAUI/Lektion_12_MAUI.csproj" Id="26b37324-e5b6-411f-ae7c-dfccd4ddcdd5">
+  <Project Path="Lektion_12_MAUI/Lektion_12_13_MAUI.csproj" Id="26b37324-e5b6-411f-ae7c-dfccd4ddcdd5">
     <Deploy Solution="Debug|*" />
   </Project>
   <Project Path="Lektion_1_Introduktion/Lektion_1_Introduktion.csproj" Id="5134b6c3-87c5-4cf3-90bd-e61819b5a260" />
