@@ -1,0 +1,6 @@
+@Lektion_14_TLA_Presentation_HostAddress = http://localhost:5204
+
+GET {{Lektion_14_TLA_Presentation_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
