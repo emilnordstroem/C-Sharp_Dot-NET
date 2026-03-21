@@ -11,6 +11,14 @@ namespace Lektion_14_TLA_DataAccess
 		{ 
 		}
 
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			modelBuilder.Entity<Hold>()
+				.HasMany(hold => hold.Studerende)
+				.WithOne(studerende => studerende.Hold)
+				.HasForeignKey(studerende => studerende.HoldId);
+		}
+
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{ 
 		}

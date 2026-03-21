@@ -6,6 +6,8 @@
 		public string Navn { get; set; }
 		public DateTime StudieStart { get; set; }
 		public int Alder { get; set; }
+		public Guid? HoldId { get; set; }
+		public Hold? Hold { get; set; }
 		public Uddannelse Uddannelse { get; set; }
 		public UddannelsesNiveau Niveau { get; set; }
 		
