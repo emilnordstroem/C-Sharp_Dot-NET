@@ -40,7 +40,16 @@ namespace Lektion_14_TLA_Presentation.Controllers
             return hold;
         }
 
-        [HttpPut("{id}")]
+		[HttpGet("{id}/studerende")]
+		public async Task<ActionResult<IEnumerable<Studerende>>> GetStuderende(Guid? id)
+		{
+            return await _context.Hold
+                .Where(hold => hold.Id == id)
+                .SelectMany(hold => hold.Studerende)
+                .ToListAsync();
+		}
+
+		[HttpPut("{id}")]
         public async Task<IActionResult> PutHold(Guid? id, Hold hold)
         {
             if (id != hold.Id)
