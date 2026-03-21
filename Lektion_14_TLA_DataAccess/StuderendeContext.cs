@@ -16,6 +16,7 @@ namespace Lektion_14_TLA_DataAccess
 		}
 
 		public DbSet<Studerende> Studerende { get; set; }
+		public DbSet<Hold> Hold { get; set; }
 
 	}
 }
