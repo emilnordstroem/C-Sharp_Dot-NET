@@ -7,6 +7,7 @@ namespace Lektion_14_TLA_DataAccess
 	public class StuderendeContext : DbContext
 	{
 
+		public StuderendeContext() { }
 		public StuderendeContext (DbContextOptions<StuderendeContext> options) : base(options)
 		{ 
 		}
@@ -20,7 +21,8 @@ namespace Lektion_14_TLA_DataAccess
 		}
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-		{ 
+		{
+			optionsBuilder.UseSqlServer("Data Source=LENOVO-THINKPAD\\SQLEXPRESS; Initial Catalog = UddannelseEntityFramework; Integrated Security = SSPI; TrustServerCertificate = true");
 		}
 
 		public DbSet<Studerende> Studerende { get; set; }
