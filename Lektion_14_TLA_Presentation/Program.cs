@@ -13,9 +13,9 @@ namespace Lektion_14_TLA_Presentation
 			// Add services to the container.
 			builder.Services.AddControllers();
 			builder.Services.AddDbContext<StuderendeContext>();
-			builder.Services.AddDbContext<StuderendeContext>(options =>
-				options.UseInMemoryDatabase("Studerende"));
-			// Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
+			// builder.Services.AddDbContext<StuderendeContext>(options =>
+			//	options.UseInMemoryDatabase("Studerende"));
+
 			builder.Services.AddOpenApi();
 
 			var app = builder.Build();
