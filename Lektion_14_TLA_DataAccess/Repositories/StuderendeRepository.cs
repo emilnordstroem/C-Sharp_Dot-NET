@@ -63,7 +63,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 				Navn = studerende.Navn,
 				StudieStart = studerende.StudieStart,
 				Alder = studerende.Alder,
-				Hold = studerende.Hold?.Navn ?? string.Empty,   // assumes Hold has a Navn property
+				Hold = studerende.Hold?.Navn ?? string.Empty,
 				Uddannelse = studerende.Uddannelse.ToString(),
 				Niveau = studerende.Niveau.ToString()
 			};

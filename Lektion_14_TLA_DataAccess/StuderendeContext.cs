@@ -4,7 +4,7 @@ using Microsoft.Extensions.Options;
 
 namespace Lektion_14_TLA_DataAccess
 {
-	public class StuderendeContext : DbContext
+	internal class StuderendeContext : DbContext
 	{
 
 		public StuderendeContext() { }

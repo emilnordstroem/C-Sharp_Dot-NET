@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Lektion_14_TLA_Business\Lektion_14_TLA_Business.csproj" />
+    <ProjectReference Include="..\Lektion_14_TLA_DataAccess\Lektion_14_TLA_DataAccess.csproj" />
     <ProjectReference Include="..\Lektion_14_TLA_DTO\Lektion_14_TLA_DTO.csproj" />
   </ItemGroup>
 

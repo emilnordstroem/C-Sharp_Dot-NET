@@ -10,9 +10,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.5" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Lektion_14_TLA_DataAccess\Lektion_14_TLA_DataAccess.csproj" />
-    <ProjectReference Include="..\Lektion_14_TLA_DTO\Lektion_14_TLA_DTO.csproj" />
-  </ItemGroup>
-
 </Project>

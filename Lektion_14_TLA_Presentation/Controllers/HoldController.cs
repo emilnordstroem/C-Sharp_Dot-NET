@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Lektion_14_TLA_DataAccess;
 using Lektion_14_TLA_DataAccess.Repository;
 using Lektion_14_TLA_DTO;
 using Microsoft.AspNetCore.Http;
@@ -66,7 +65,7 @@ namespace Lektion_14_TLA_Presentation.Controllers
             }
 
             await _hold.PostHold(hold);
-            return CreatedAtAction("GetHold", new { id = hold.Id }, hold);
+            return CreatedAtAction("GetHold", hold);
         }
 
         private bool HoldExists(Guid? id)

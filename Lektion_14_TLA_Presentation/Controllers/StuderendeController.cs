@@ -54,7 +54,7 @@ namespace Lektion_14_TLA_Presentation.Controllers
                 return BadRequest();
             }
 		    await _studerende.PostStuderende(studerende);
-            return CreatedAtAction("GetStuderende", new { id = studerende.Id }, studerende);
+            return CreatedAtAction("GetStuderende", studerende);
         }
 
         private bool StuderendeExists(Guid id)
