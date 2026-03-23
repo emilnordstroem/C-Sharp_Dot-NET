@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Lektion_14_TLA_DataAccess.Repository;
+using Lektion_14_TLA_DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Lektion_14_TLA_Business;
-using Lektion_14_TLA_DataAccess;
 
 namespace Lektion_14_TLA_Presentation.Controllers
 {
@@ -14,88 +14,52 @@ namespace Lektion_14_TLA_Presentation.Controllers
     [ApiController]
     public class StuderendeController : ControllerBase
     {
-        private readonly StuderendeContext _context;
+        private readonly StuderendeRepository _studerende;
 
-        public StuderendeController(StuderendeContext context)
+        public StuderendeController(StuderendeRepository studerende)
         {
-            _context = context;
+            _studerende = studerende;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Studerende>>> GetStuderende()
         {
-            return await _context.Studerende.ToListAsync();
+            return Ok(await _studerende.GetStuderende());
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Studerende>> GetStuderende(Guid id)
         {
-            var studerende = await _context.Studerende.FindAsync(id);
+            var studerende = await _studerende.GetStuderende(id);
 
             if (studerende == null)
             {
                 return NotFound();
             }
 
-            return studerende;
+            return Ok(studerende);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStuderende(Guid id, Studerende studerende)
         {
-            if (id != studerende.Id)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(studerende).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!StuderendeExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            throw new NotImplementedException();
         }
 
         [HttpPost]
         public async Task<ActionResult<Studerende>> PostStuderende(Studerende studerende)
         {
-            _context.Studerende.Add(studerende);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetStuderende", new { id = studerende.Id }, studerende);
-        }
-
-        [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteStuderende(Guid id)
-        {
-            var studerende = await _context.Studerende.FindAsync(id);
             if (studerende == null)
             {
-                return NotFound();
+                return BadRequest();
             }
-
-            _context.Studerende.Remove(studerende);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+		    await _studerende.PostStuderende(studerende);
+            return CreatedAtAction("GetStuderende", new { id = studerende.Id }, studerende);
         }
 
         private bool StuderendeExists(Guid id)
         {
-            return _context.Studerende.Any(e => e.Id == id);
+            return _studerende.StuderendeExists(id);
         }
     }
 }

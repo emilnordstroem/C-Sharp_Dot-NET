@@ -1,6 +1,6 @@
-﻿namespace Lektion_14_TLA_Business
+﻿namespace Lektion_14_TLA_DataAccess
 {
-	public class Studerende
+	internal class Studerende
 	{
 		public Guid? Id { get; set; }
 		public string Navn { get; set; }

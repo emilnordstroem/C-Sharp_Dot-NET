@@ -1,5 +1,5 @@
 
-using Lektion_14_TLA_DataAccess;
+using Lektion_14_TLA_DataAccess.Repository;
 using Microsoft.EntityFrameworkCore;
 
 namespace Lektion_14_TLA_Presentation
@@ -12,7 +12,8 @@ namespace Lektion_14_TLA_Presentation
 
 			// Add services to the container.
 			builder.Services.AddControllers();
-			builder.Services.AddDbContext<StuderendeContext>();
+			builder.Services.AddScoped<StuderendeRepository>();
+			builder.Services.AddScoped<HoldRepository>();
 			// builder.Services.AddDbContext<StuderendeContext>(options =>
 			//	options.UseInMemoryDatabase("Studerende"));
 

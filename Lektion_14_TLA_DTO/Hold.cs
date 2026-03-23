@@ -2,13 +2,12 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Lektion_14_TLA_Business
+namespace Lektion_14_TLA_DTO
 {
 	public class Hold
 	{
-		public Guid? Id { get; set; }
 		public string Navn { get; set; }
-		public List<Studerende> Studerende { get; set; } = new List<Studerende>();
+		public List<string> Studerende { get; set; } = new List<string>();
 
 		public Hold ()
 		{

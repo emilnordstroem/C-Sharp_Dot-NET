@@ -2,11 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Lektion_14_TLA_DataAccess;
+using Lektion_14_TLA_DataAccess.Repository;
+using Lektion_14_TLA_DTO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using Lektion_14_TLA_Business;
-using Lektion_14_TLA_DataAccess;
 
 namespace Lektion_14_TLA_Presentation.Controllers
 {
@@ -14,23 +15,23 @@ namespace Lektion_14_TLA_Presentation.Controllers
     [ApiController]
     public class HoldController : ControllerBase
     {
-        private readonly StuderendeContext _context;
+        private readonly HoldRepository _hold;
 
-        public HoldController(StuderendeContext context)
+        public HoldController(HoldRepository hold)
         {
-            _context = context;
+            _hold = hold;
         }
 
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Hold>>> GetHold()
         {
-            return await _context.Hold.ToListAsync();
+            return Ok(await _hold.GetHold());
         }
 
         [HttpGet("{id}")]
         public async Task<ActionResult<Hold>> GetHold(Guid? id)
         {
-            var hold = await _context.Hold.FindAsync(id);
+            var hold = await _hold.GetHold(id);
 
             if (hold == null)
             {
@@ -43,68 +44,38 @@ namespace Lektion_14_TLA_Presentation.Controllers
 		[HttpGet("{id}/studerende")]
 		public async Task<ActionResult<IEnumerable<Studerende>>> GetStuderende(Guid? id)
 		{
-            return await _context.Hold
-                .Where(hold => hold.Id == id)
-                .SelectMany(hold => hold.Studerende)
-                .ToListAsync();
+            if (id == null)
+            {
+                return BadRequest();
+            }
+            return Ok(await _hold.GetStuderende(id));
 		}
 
 		[HttpPut("{id}")]
-        public async Task<IActionResult> PutHold(Guid? id, Hold hold)
+        public async Task<IActionResult> PutHold(Guid id, Hold hold)
         {
-            if (id != hold.Id)
+            throw new NotImplementedException();
+		}
+
+		[HttpPost]
+        public async Task<ActionResult<Hold>> PostHold(Hold hold)
+        {
+            if(hold == null)
             {
                 return BadRequest();
             }
 
-            _context.Entry(hold).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!HoldExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        [HttpPost]
-        public async Task<ActionResult<Hold>> PostHold(Hold hold)
-        {
-            _context.Hold.Add(hold);
-            await _context.SaveChangesAsync();
-
+            await _hold.PostHold(hold);
             return CreatedAtAction("GetHold", new { id = hold.Id }, hold);
-        }
-
-		[HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteHold(Guid? id)
-        {
-            var hold = await _context.Hold.FindAsync(id);
-            if (hold == null)
-            {
-                return NotFound();
-            }
-
-            _context.Hold.Remove(hold);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
         }
 
         private bool HoldExists(Guid? id)
         {
-            return _context.Hold.Any(e => e.Id == id);
+            if(id == null)
+            {
+                return false;
+            }
+            return _hold.HoldExists(id);
         }
-    }
+	}
 }
