@@ -32,7 +32,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 		{
 			using (StuderendeContext _context = new StuderendeContext()) 
 			{
-				var dbStuderende = MapToDBModel(studerende);
+				var dbStuderende = await MapToDBModel(studerende, _context);
 				_context.Studerende.Add(dbStuderende);
 				await _context.SaveChangesAsync();
 				return studerende;
@@ -51,7 +51,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 		{
 			using (StuderendeContext _context = new StuderendeContext())
 			{
-				return _context.Studerende.Any(e => e.Id == id);
+				return _context.Studerende.Any(studerende => studerende.Id == id);
 			}
 		}
 
@@ -69,14 +69,20 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			};
 		}
 
-		private static Lektion_14_TLA_DataAccess.Studerende MapToDBModel(Lektion_14_TLA_DTO.Studerende studerende)
+		private static async Task<Lektion_14_TLA_DataAccess.Studerende> MapToDBModel(Lektion_14_TLA_DTO.Studerende studerende, StuderendeContext context)
 		{
+			Guid? holdId = await context.Hold
+					.Where(hold => hold.Navn == studerende.Hold)
+					.Select(hold => (Guid?)hold.Id)
+					.FirstOrDefaultAsync();
+
 			return new Lektion_14_TLA_DataAccess.Studerende
 			{
 				Id = Guid.NewGuid(),
 				Navn = studerende.Navn,
 				StudieStart = studerende.StudieStart,
 				Alder = studerende.Alder,
+				HoldId = holdId,
 				Uddannelse = Enum.Parse<Uddannelse>(studerende.Uddannelse),
 				Niveau = Enum.Parse<UddannelsesNiveau>(studerende.Niveau)
 			};
