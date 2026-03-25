@@ -15,7 +15,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			using (StuderendeContext _context = new StuderendeContext())
 			{
 				var dbStuderende = await _context.Studerende.ToListAsync();
-				return dbStuderende.Select(studerende => MapToDTO(studerende));
+				return dbStuderende.Select(studerende => MapToModelDTO(studerende));
 			}
 		}
 
@@ -24,7 +24,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			using (StuderendeContext _context = new StuderendeContext())
 			{
 				var studerende = await _context.Studerende.FindAsync(id);
-				return MapToDTO(studerende);
+				return MapToModelDTO(studerende);
 			}
 		}
 
@@ -32,7 +32,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 		{
 			using (StuderendeContext _context = new StuderendeContext()) 
 			{
-				var dbStuderende = await MapToDBModel(studerende, _context);
+				var dbStuderende = await MapToModelDB(studerende, _context);
 				_context.Studerende.Add(dbStuderende);
 				await _context.SaveChangesAsync();
 				return studerende;
@@ -56,7 +56,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 		}
 
 		// Mapping
-		internal static Lektion_14_TLA_DTO.StuderendeDTO MapToDTO(StuderendeDB studerende)
+		internal static StuderendeDTO MapToModelDTO(StuderendeDB studerende)
 		{
 			return new StuderendeDTO
 			{
@@ -69,7 +69,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			};
 		}
 
-		private static async Task<StuderendeDB> MapToDBModel(StuderendeDTO studerende, StuderendeContext context)
+		private static async Task<StuderendeDB> MapToModelDB(StuderendeDTO studerende, StuderendeContext context)
 		{
 			Guid? holdId = await context.Hold
 					.Where(hold => hold.Navn == studerende.Hold)

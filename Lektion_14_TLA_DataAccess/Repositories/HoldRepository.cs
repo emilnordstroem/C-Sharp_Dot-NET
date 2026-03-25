@@ -14,7 +14,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			using (StuderendeContext _context = new StuderendeContext())
 			{
 				var hold = await _context.Hold.ToListAsync();
-				return hold.Select(hold => MapToDTO(hold));
+				return hold.Select(hold => MapToModelDTO(hold));
 			}
 		}
 
@@ -23,7 +23,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			using (StuderendeContext _context = new StuderendeContext())
 			{
 				var hold = await _context.Hold.FindAsync(id);
-				return MapToDTO(hold);
+				return MapToModelDTO(hold);
 			}
 		}
 
@@ -39,9 +39,9 @@ namespace Lektion_14_TLA_DataAccess.Repository
 				{
 					return null;
 				}
-				HoldDTO holdDTO = HoldRepository.MapToDTO(holdDB);
+				HoldDTO holdDTO = MapToModelDTO(holdDB);
 				holdDTO.Studerende = holdDB.Studerende
-					.Select(studerende => StuderendeRepository.MapToDTO(studerende).ToString())
+					.Select(studerende => StuderendeRepository.MapToModelDTO(studerende).ToString())
 					.ToList();
 				return holdDTO;
 			}
@@ -51,7 +51,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 		{
 			using (StuderendeContext _context = new StuderendeContext())
 			{
-				var dbHold = MapToDBModel(hold);
+				var dbHold = MapToModelDB(hold);
 				_context.Hold.Add(dbHold);
 				await _context.SaveChangesAsync();
 				return hold;
@@ -67,7 +67,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 		}
 
 		// Mapping
-		private static HoldDTO MapToDTO(HoldDB hold)
+		private static HoldDTO MapToModelDTO(HoldDB hold)
 		{
 			return new HoldDTO
 			{
@@ -76,7 +76,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			};
 		}
 
-		private static HoldDB MapToDBModel(HoldDTO hold)
+		private static HoldDB MapToModelDB(HoldDTO hold)
 		{
 			return new HoldDB
 			{
