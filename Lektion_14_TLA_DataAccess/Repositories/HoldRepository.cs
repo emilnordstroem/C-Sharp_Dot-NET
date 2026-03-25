@@ -58,11 +58,27 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			}
 		}
 
-		public async Task<HoldDTO> PutHold(Guid id, HoldDTO hold)
+		public async Task<HoldDTO> PutHold(Guid id, HoldDTO holdDTO)
 		{
 			using (StuderendeContext _context = new StuderendeContext())
 			{
-				throw new NotImplementedException();
+				var holdDB = await _context.Hold	
+					.FindAsync(id);
+				var studerendeDB = await _context.Studerende
+					.Where(studerende => studerende.HoldId == id)
+					.ToListAsync();
+
+				if (holdDB == null || studerendeDB == null)
+				{
+					return null;
+				}
+
+				// Det er ikke not blot at ændre id på et nyt DB objekt - derfor eksplicit
+				holdDB.Navn = holdDTO.Navn;
+				holdDB.Studerende = studerendeDB;
+
+				await _context.SaveChangesAsync();
+				return holdDTO;
 			}
 		}
 

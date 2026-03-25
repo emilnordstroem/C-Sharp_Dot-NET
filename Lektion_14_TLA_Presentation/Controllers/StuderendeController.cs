@@ -43,7 +43,11 @@ namespace Lektion_14_TLA_Presentation.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> PutStuderende(Guid id, StuderendeDTO studerende)
         {
-            throw new NotImplementedException();
+            if (studerende == null) 
+            {
+                return BadRequest();
+            }
+            return Ok(await _studerende.PutStuderende(id, studerende));
         }
 
         [HttpPost]

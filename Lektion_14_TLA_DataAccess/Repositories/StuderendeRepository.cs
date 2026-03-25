@@ -4,12 +4,12 @@ using System.Text;
 using Lektion_14_TLA_DTO;
 using Lektion_14_TLA_DataAccess;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace Lektion_14_TLA_DataAccess.Repository
 {
 	public class StuderendeRepository
 	{
-
 		public async Task<IEnumerable<StuderendeDTO>> GetStuderende()
 		{
 			using (StuderendeContext _context = new StuderendeContext())
@@ -41,11 +41,30 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			}
 		}
 
-		public async Task<StuderendeDTO> PutStuderende(Guid id, StuderendeDTO studerende)
+		public async Task<StuderendeDTO> PutStuderende(Guid id, StuderendeDTO studerendeDTO)
 		{
 			using (StuderendeContext _context = new StuderendeContext())
 			{
-				throw new NotImplementedException();
+				var studerendeDB = await _context.Studerende
+					.FindAsync(id);
+				var holdDB = await _context.Hold
+					.FirstOrDefaultAsync(hold => hold.Navn == studerendeDTO.Hold);
+
+				if (studerendeDB == null || holdDB == null)
+				{
+					return null;
+				}
+
+				// Det er ikke not blot at ændre id på et nyt DB objekt - derfor eksplicit
+				studerendeDB.Navn = studerendeDTO.Navn;
+				studerendeDB.StudieStart = studerendeDTO.StudieStart;
+				studerendeDB.Alder = studerendeDTO.Alder;
+				studerendeDB.HoldId = holdDB.Id;
+				studerendeDB.Uddannelse = Enum.Parse<Uddannelse>(studerendeDTO.Uddannelse);
+				studerendeDB.Niveau = Enum.Parse<UddannelsesNiveau>(studerendeDTO.Niveau);
+
+				await _context.SaveChangesAsync();
+				return studerendeDTO;
 			}
 		}
 

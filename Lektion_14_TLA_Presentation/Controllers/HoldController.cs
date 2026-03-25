@@ -53,7 +53,11 @@ namespace Lektion_14_TLA_Presentation.Controllers
 		[HttpPut("{id}")]
         public async Task<IActionResult> PutHold(Guid id, HoldDTO hold)
         {
-            throw new NotImplementedException();
+			if (id == null || hold == null)
+			{
+				return BadRequest();
+			}
+			return Ok(await _hold.PutHold(id, hold));
 		}
 
 		[HttpPost]
