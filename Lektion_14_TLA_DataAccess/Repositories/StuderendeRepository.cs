@@ -14,7 +14,9 @@ namespace Lektion_14_TLA_DataAccess.Repository
 		{
 			using (StuderendeContext _context = new StuderendeContext())
 			{
-				var dbStuderende = await _context.Studerende.ToListAsync();
+				var dbStuderende = await _context.Studerende
+					.Include(studerende => studerende.Hold)
+					.ToListAsync();
 				return dbStuderende.Select(studerende => MapToModelDTO(studerende));
 			}
 		}
