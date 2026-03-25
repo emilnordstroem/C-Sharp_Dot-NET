@@ -10,7 +10,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 	public class StuderendeRepository
 	{
 
-		public async Task<IEnumerable<Lektion_14_TLA_DTO.Studerende>> GetStuderende()
+		public async Task<IEnumerable<StuderendeDTO>> GetStuderende()
 		{
 			using (StuderendeContext _context = new StuderendeContext())
 			{
@@ -19,7 +19,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			}
 		}
 
-		public async Task<Lektion_14_TLA_DTO.Studerende> GetStuderende(Guid id)
+		public async Task<StuderendeDTO> GetStuderende(Guid id)
 		{
 			using (StuderendeContext _context = new StuderendeContext())
 			{
@@ -28,7 +28,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			}
 		}
 
-		public async Task<Lektion_14_TLA_DTO.Studerende> PostStuderende(Lektion_14_TLA_DTO.Studerende studerende)
+		public async Task<StuderendeDTO> PostStuderende(StuderendeDTO studerende)
 		{
 			using (StuderendeContext _context = new StuderendeContext()) 
 			{
@@ -39,7 +39,7 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			}
 		}
 
-		public async Task<Lektion_14_TLA_DTO.Studerende> PutStuderende(Guid id, Lektion_14_TLA_DTO.Studerende studerende)
+		public async Task<StuderendeDTO> PutStuderende(Guid id, StuderendeDTO studerende)
 		{
 			using (StuderendeContext _context = new StuderendeContext())
 			{
@@ -56,9 +56,9 @@ namespace Lektion_14_TLA_DataAccess.Repository
 		}
 
 		// Mapping
-		internal static Lektion_14_TLA_DTO.Studerende MapToDTO(Lektion_14_TLA_DataAccess.Studerende studerende)
+		internal static Lektion_14_TLA_DTO.StuderendeDTO MapToDTO(StuderendeDB studerende)
 		{
-			return new Lektion_14_TLA_DTO.Studerende
+			return new StuderendeDTO
 			{
 				Navn = studerende.Navn,
 				StudieStart = studerende.StudieStart,
@@ -69,14 +69,14 @@ namespace Lektion_14_TLA_DataAccess.Repository
 			};
 		}
 
-		private static async Task<Lektion_14_TLA_DataAccess.Studerende> MapToDBModel(Lektion_14_TLA_DTO.Studerende studerende, StuderendeContext context)
+		private static async Task<StuderendeDB> MapToDBModel(StuderendeDTO studerende, StuderendeContext context)
 		{
 			Guid? holdId = await context.Hold
 					.Where(hold => hold.Navn == studerende.Hold)
 					.Select(hold => (Guid?)hold.Id)
 					.FirstOrDefaultAsync();
 
-			return new Lektion_14_TLA_DataAccess.Studerende
+			return new StuderendeDB
 			{
 				Id = Guid.NewGuid(),
 				Navn = studerende.Navn,

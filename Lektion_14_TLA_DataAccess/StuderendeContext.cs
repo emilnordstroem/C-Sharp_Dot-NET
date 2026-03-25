@@ -14,7 +14,7 @@ namespace Lektion_14_TLA_DataAccess
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
-			modelBuilder.Entity<Hold>()
+			modelBuilder.Entity<HoldDB>()
 				.HasMany(hold => hold.Studerende)
 				.WithOne(studerende => studerende.Hold)
 				.HasForeignKey(studerende => studerende.HoldId);
@@ -25,8 +25,8 @@ namespace Lektion_14_TLA_DataAccess
 			optionsBuilder.UseSqlServer("Data Source=LENOVO-THINKPAD\\SQLEXPRESS; Initial Catalog = UddannelseEntityFramework; Integrated Security = SSPI; TrustServerCertificate = true");
 		}
 
-		public DbSet<Studerende> Studerende { get; set; }
-		public DbSet<Hold> Hold { get; set; }
+		public DbSet<StuderendeDB> Studerende { get; set; }
+		public DbSet<HoldDB> Hold { get; set; }
 
 	}
 }

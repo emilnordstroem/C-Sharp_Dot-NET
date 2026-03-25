@@ -8,7 +8,6 @@
     <Deploy Solution="Debug|*" />
   </Project>
   <Project Path="Lektion_14_Reqnroll/Lektion_14_Reqnroll.csproj" Id="b498647f-01d1-408f-8ed9-326f655813dc" />
-  <Project Path="Lektion_14_TLA_Business/Lektion_14_TLA_Business.csproj" Id="5e97de31-bac7-49e8-8bf4-8a7fb98678b2" />
   <Project Path="Lektion_14_TLA_DataAccess/Lektion_14_TLA_DataAccess.csproj" Id="65aa9afb-e643-48a3-9a2f-1b27643f79eb" />
   <Project Path="Lektion_14_TLA_DTO/Lektion_14_TLA_DTO.csproj" Id="2751f0f8-3282-4cb8-a6d2-ff3cce904c45" />
   <Project Path="Lektion_14_TLA_Presentation/Lektion_14_TLA_Presentation.csproj" Id="cef27440-5240-474c-a098-5808aa6958c4" />

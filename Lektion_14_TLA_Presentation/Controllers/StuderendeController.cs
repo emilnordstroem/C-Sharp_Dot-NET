@@ -22,13 +22,13 @@ namespace Lektion_14_TLA_Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Studerende>>> GetStuderende()
+        public async Task<ActionResult<IEnumerable<StuderendeDTO>>> GetStuderende()
         {
             return Ok(await _studerende.GetStuderende());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Studerende>> GetStuderende(Guid id)
+        public async Task<ActionResult<StuderendeDTO>> GetStuderende(Guid id)
         {
             var studerende = await _studerende.GetStuderende(id);
 
@@ -41,13 +41,13 @@ namespace Lektion_14_TLA_Presentation.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutStuderende(Guid id, Studerende studerende)
+        public async Task<IActionResult> PutStuderende(Guid id, StuderendeDTO studerende)
         {
             throw new NotImplementedException();
         }
 
         [HttpPost]
-        public async Task<ActionResult<Studerende>> PostStuderende(Studerende studerende)
+        public async Task<ActionResult<StuderendeDTO>> PostStuderende(StuderendeDTO studerende)
         {
             if (studerende == null)
             {

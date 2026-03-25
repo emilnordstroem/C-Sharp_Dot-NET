@@ -4,13 +4,13 @@ using System.Text;
 
 namespace Lektion_14_TLA_DataAccess;
 
-internal class Hold
+internal class HoldDB
 {
 	public Guid? Id { get; set; }
 	public string Navn { get; set; }
-	public List<Studerende> Studerende { get; set; } = new List<Studerende>();
+	public List<StuderendeDB> Studerende { get; set; } = new List<StuderendeDB>();
 
-	public Hold ()
+	public HoldDB ()
 	{
 
 	}

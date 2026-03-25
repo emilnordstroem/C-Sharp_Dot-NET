@@ -22,13 +22,13 @@ namespace Lektion_14_TLA_Presentation.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Hold>>> GetHold()
+        public async Task<ActionResult<IEnumerable<HoldDTO>>> GetHold()
         {
             return Ok(await _hold.GetHold());
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Hold>> GetHold(Guid? id)
+        public async Task<ActionResult<HoldDTO>> GetHold(Guid? id)
         {
             var hold = await _hold.GetHold(id);
 
@@ -41,23 +41,23 @@ namespace Lektion_14_TLA_Presentation.Controllers
         }
 
 		[HttpGet("{id}/studerende")]
-		public async Task<ActionResult<IEnumerable<Studerende>>> GetStuderende(Guid? id)
+		public async Task<ActionResult<HoldDTO>> GetHoldMedStuderende(Guid? id)
 		{
             if (id == null)
             {
                 return BadRequest();
             }
-            return Ok(await _hold.GetStuderende(id));
+            return Ok(await _hold.GetHoldMedStuderende(id));
 		}
 
 		[HttpPut("{id}")]
-        public async Task<IActionResult> PutHold(Guid id, Hold hold)
+        public async Task<IActionResult> PutHold(Guid id, HoldDTO hold)
         {
             throw new NotImplementedException();
 		}
 
 		[HttpPost]
-        public async Task<ActionResult<Hold>> PostHold(Hold hold)
+        public async Task<ActionResult<HoldDTO>> PostHold(HoldDTO hold)
         {
             if(hold == null)
             {
@@ -66,15 +66,6 @@ namespace Lektion_14_TLA_Presentation.Controllers
 
             await _hold.PostHold(hold);
             return CreatedAtAction("GetHold", hold);
-        }
-
-        private bool HoldExists(Guid? id)
-        {
-            if(id == null)
-            {
-                return false;
-            }
-            return _hold.HoldExists(id);
         }
 	}
 }
